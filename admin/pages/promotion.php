@@ -18,7 +18,7 @@
 						<i class="flaticon-right-arrow"></i>
 					</li>
 					<li class="nav-item">
-						<a href="#">รายการประเภทสินค้า</a>
+						<a href="#">รายการโปรโมชั่น</a>
 					</li>
 
 				</ul>
@@ -30,24 +30,24 @@
 					<div class="card">
 						<div class="card-header">
 							<div class="d-flex align-items-center">
-								<h4 class="card-title">รายการประเภทสินค้า</h4>
-								<a href="add-category.php" class="btn btn-primary btn-round ml-auto" >
+								<h4 class="card-title">รายการโปรโมชั่น</h4>
+								<a href="add-promotion.php" class="btn btn-primary btn-round ml-auto" >
 									<i class="fa fa-plus"></i>
-									เพิ่มประเภทสินค้า
+									เพิ่มโปรโมชั่น
 								</a>
 							</div>
 						</div>
 						<div class="card-body">
-							<!-- Modal add -->
+							<!-- Modal -->
 							<div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
 								<div class="modal-dialog" role="document">
 									<div class="modal-content">
 										<div class="modal-header border-0">
 											<h5 class="modal-title">
 												<span class="fw-mediumbold">
-													เพิ่มประเภท</span>
+													เพิ่ม</span>
 												<span class="fw-light">
-													สินค้า
+													โปรโมชั่น
 												</span>
 											</h5>
 											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -56,28 +56,15 @@
 										</div>
 										<div class="modal-body">
 
-											<form action="../controllers/category/add_category.php" method="post" enctype="multipart/form-data">
+											<form action="../controllers/promotion/add_promotion.php" method="post" >
 												<div class="row">
 													<div class="col-sm-12">
 														<div class="form-group form-group-default">
-															<label>ชื่อหมวดหมู่สินค้า</label>
+															<label>ชื่อโปรโมชั่น</label>
 															<input id="addName" type="text" name="name" class="form-control" placeholder="name" required>
 														</div>
 													</div>
-													<div class="col-md-6 pr-0">
-														<div class="form-group form-group-default">
-															<label>รูปประเภทสินค้า</label>
-
-
-															<div class="input-file input-file-image text-center">
-																<img class="img-upload-preview " width="200" height="100" src="http://placehold.it/100x100" alt="preview" style="object-fit: cover;">
-																<input type="file" class="form-control form-control-file" id="uploadImg" name="image" accept="image/*" required>
-																<label for="uploadImg" class="btn btn-primary btn-round btn-lg"><i class="fa fa-file-image"></i> Upload a Image</label>
-															</div>
-
-														</div>
-													</div>
-
+													
 													<div class="col-md-6">
 														<div class="form-group form-group-default">
 															<label>สถานะ</label>
@@ -86,7 +73,7 @@
 													</div>
 												</div>
 												<div class="modal-footer border-0">
-													<button type="submit" class="btn btn-primary">ยินยัน</button>
+													<button type="submit"  class="btn btn-primary">ยินยัน</button>
 													<button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
 												</div>
 											</form>
@@ -95,72 +82,14 @@
 									</div>
 								</div>
 							</div>
-							<!-- Modal edit-->
-							<div class="modal fade" id="addRowModaledit" tabindex="-1" role="dialog" aria-hidden="true">
-								<div class="modal-dialog" role="document">
-									<div class="modal-content">
-										<div class="modal-header border-0">
-											<h5 class="modal-title">
-												<span class="fw-mediumbold">
-													แก้ไขประเภท</span>
-												<span class="fw-light">
-													สินค้า
-												</span>
-											</h5>
-											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-												<span aria-hidden="true">&times;</span>
-											</button>
-										</div>
-										<div class="modal-body">
-
-											<form action="../controllers/category/add_category.php" method="post" enctype="multipart/form-data">
-												<div class="row">
-													<div class="col-sm-12">
-														<div class="form-group form-group-default">
-															<label>ชื่อหมวดหมู่สินค้า</label>
-															<input id="addName" type="text" name="name" class="form-control" placeholder="name" required>
-														</div>
-													</div>
-													<div class="col-md-6 pr-0">
-														<div class="form-group form-group-default">
-															<label>รูปประเภทสินค้า</label>
-
-
-															<div class="input-file input-file-image text-center">
-																<img class="img-upload-preview " width="200" height="100" src="http://placehold.it/100x100" alt="preview" style="object-fit: cover;">
-																<input type="file" class="form-control form-control-file" id="uploadImg" name="image" accept="image/*" required>
-																<label for="uploadImg" class="btn btn-primary btn-round btn-lg"><i class="fa fa-file-image"></i> Upload a Image</label>
-															</div>
-
-														</div>
-													</div>
-
-													<div class="col-md-6">
-														<div class="form-group form-group-default">
-															<label>สถานะ</label>
-															<input type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-style="btn-round" name="status" class="mt-1">
-														</div>
-													</div>
-												</div>
-												<div class="modal-footer border-0">
-													<button type="submit" class="btn btn-primary">ยินยัน</button>
-													<button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
-												</div>
-											</form>
-										</div>
-
-									</div>
-								</div>
-							</div>
-
 
 							<div class="table-responsive">
 								<table id="add-row" class="display table table-striped table-hover">
 									<thead>
 										<tr>
 											<th>ลำดับ</th>
-											<th>หมวดหมู่สินค้า</th>
-											<th>รูปภาพหมวดหมู่สินค้า</th>
+											<th>โปรโมชั่น</th>
+											
 											<th>สถานะ</th>
 											<th style="width: 10%">จัดการ</th>
 										</tr>
@@ -168,31 +97,31 @@
 
 									<tbody>
 
-										<?php
-										include("../../config/connectdb.php");
-										$select = $conn->prepare("SELECT * FROM `tbl_categories` ORDER BY `id`;"); //Query
-										$select->execute();
-										while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
-											echo '<tr>';
-											echo '<td>' . $row["id"] . '</td>';
-											echo '<td >  <img class="img-upload-preview " width="50" height="50" src="../uploads/'. $row["image"] . '" alt="preview" style="object-fit: cover;"></td> ';
-											echo '<td>' . $row["name"] . '</td>';
-											echo '<td>' . $row["status"] . '</td>';
-											echo '<td>
+									<?php
+									include("../../config/connectdb.php");
+									$select = $conn->prepare("SELECT * FROM `tbl_promotions` ORDER BY `id`;");//Query
+									$select->execute();
+									while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+										echo '<tr>';
+										echo '<td>' . $row["id"] . '</td>';
+										
+										echo '<td>' . $row["name"] . '</td>';
+										echo '<td>' . $row["status"] . '</td>';
+										echo '<td>
 												<div class="form-button-action">
-													<a href="edit-category.php?id='. $row["id"] .'" data-toggle="tooltip"  title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
+													<a href="edit-promotion.php?id='. $row["id"] .'" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
 														<i class="fa fa-edit"></i>
 													</a>
-													<a href="../controllers/category/delete_category.php?id='. $row["id"] .'" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+													<a href="../controllers/promotion/delete_promotion.php?id='. $row["id"] .'" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
 														<i class="fa fa-times"></i>
 													</a>
 												</div>
 											</td>';
-											echo '</tr>';
-										}
-										?>
+										echo '</tr>';
+									}
+									?>
 
-
+									
 									</tbody>
 								</table>
 							</div>

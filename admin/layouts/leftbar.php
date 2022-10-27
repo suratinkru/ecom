@@ -38,7 +38,7 @@
 						</div>
 					</div>
 					<ul class="nav nav-primary">
-						<li class="nav-item active">
+						<li class="nav-item <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/admin/pages/index.php' ? 'active' : ''  ?>">
 							<a  href="index.php" class="collapsed" aria-expanded="false">
 								<i class="fas fa-home"></i>
 								<p>Dashboard</p>
@@ -52,7 +52,7 @@
 							</span>
 							<h4 class="text-section">Components</h4>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/admin/pages/category.php' || $_SERVER['REQUEST_URI'] === '/ecommerce/admin/pages/add-category.php' || str_contains($_SERVER['REQUEST_URI'], '/ecommerce/admin/pages/edit-category.php')  ? 'active' : ''  ?>">
 							<a  href="category.php">
 								<i class="fas fa-layer-group"></i>
 								<p>หมวดหมู่สินค้า</p>
@@ -60,10 +60,18 @@
 							</a>
 						
 						</li>
-						<li class="nav-item">
+						<li class="nav-item <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/admin/pages/product.php' ? 'active' : ''  ?>">
 							<a  href="product.php">
 								<i class="fas fa-th-list"></i>
 								<p>ข้อมูลรายการสินค้า</p>
+								
+							</a>
+							
+						</li>
+						<li class="nav-item <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/admin/pages/promotion.php' ? 'active' : ''  ?>" >
+							<a  href="promotion.php">
+							<i class="fab fa-product-hunt"></i>
+								<p>ตั้งค่าโปรโมชั่น</p>
 								
 							</a>
 							

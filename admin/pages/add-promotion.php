@@ -3,9 +3,61 @@
 
 <?php include_once "../layouts/leftbar.php" ?>
 
-<?php include("../controllers/category/list_category.php");
-?>
 
+<style>
+	.switch {
+		position: relative;
+		display: inline-block;
+		width: 60px;
+		height: 34px;
+	}
+
+	.switch input {
+		display: none;
+	}
+
+	.slider {
+		position: absolute;
+		cursor: pointer;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: #ccc;
+		-webkit-transition: .4s;
+		transition: .4s;
+		border-radius: 30px;
+	}
+
+	.slider:before {
+		position: absolute;
+		content: "";
+		height: 26px;
+		width: 26px;
+		left: 4px;
+		bottom: 4px;
+		background-color: white;
+		-webkit-transition: .4s;
+		transition: .4s;
+		border-radius: 30px;
+	}
+
+	input:checked+.slider {
+		background-color: #2196F3;
+		border-radius: 30px;
+	}
+
+	input:focus+.slider {
+		box-shadow: 0 0 1px #2196F3;
+		border-radius: 30px;
+	}
+
+	input:checked+.slider:before {
+		-webkit-transform: translateX(26px);
+		-ms-transform: translateX(26px);
+		transform: translateX(26px);
+	}
+</style>
 
 <!-- main-content -->
 <div class="main-panel">
@@ -23,7 +75,13 @@
 						<i class="flaticon-right-arrow"></i>
 					</li>
 					<li class="nav-item">
-						<a href="#">รายการสินค้า</a>
+						<a href="#">รายการโปรโมชั่นสินค้า</a>
+					</li>
+					<li class="separator">
+						<i class="flaticon-right-arrow"></i>
+					</li>
+					<li class="nav-item">
+						<a href="#">เพิ่มโปรโมชั่นสินค้า</a>
 					</li>
 
 				</ul>
@@ -35,69 +93,43 @@
 					<div class="card">
 						<div class="card-header">
 							<div class="d-flex align-items-center">
-								<h4 class="card-title">รายการสินค้า</h4>
-								<a href="add-product.php" class="btn btn-primary btn-round ml-auto">
+								<h4 class="card-title"> เพิ่มโปรโมชั่นสินค้า</h4>
+
+								<!-- <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
 									<i class="fa fa-plus"></i>
-									เพิ่มสินค้า
-									</a>
+									เพิ่มโปรโมชั่นสินค้า
+								</button> -->
 							</div>
 						</div>
 						<div class="card-body">
-							<!-- Modal -->
+
+
+							<form action="../controllers/promotion/add_promotion.php" method="post">
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="form-group ">
+											<label>ชื่อโปรโมชั่นสินค้า</label>
+											<input id="addName" type="text" name="name" class="form-control" placeholder="name" required>
+										</div>
+									</div>
 							
-							<div class="table-responsive">
-								<table id="add-row" class="display table table-striped table-hover">
-									<thead>
-										<tr>
-											<th>ลำดับ</th>
-											<th>รูปภาพสินค้า</th>
-											<th>ชื่อสินค้า</th>
-											<th>รหัสสินค้า</th>
-											<th>หมวดหมู่สินค้า</th>
-											<th>โปรโมชั่นสินค้า</th>
-											<th>รายละเอียดสินค้า</th>
-											<th>ราคา</th>
-											<th>จำนวน</th>
-											<th>สถานะ</th>
 
-											<th style="width: 10%">จัดการ</th>
-										</tr>
-									</thead>
-
-									<tbody>
-									<?php
-										include("../../config/connectdb.php");
-										$select = $conn->prepare("SELECT * FROM `tbl_products` ORDER BY `id`;"); //Query
-										$select->execute();
-										while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
-											echo '<tr>';
-											echo '<td>' . $row["id"] . '</td>';
-											echo '<td >  <img class="img-upload-preview " width="50" height="50" src="../uploads/'. $row["image"] . '" alt="preview" style="object-fit: cover;"></td> ';
-											echo '<td>' . $row["name"] . '</td>';
-											echo '<td>' . $row["code"] . '</td>';
-											echo '<td>' . $row["category_id"] . '</td>';
-											echo '<td>' . $row["promotion_id"] . '</td>';
-											echo '<td>' . $row["description"] . '</td>';
-											echo '<td>' . $row["price"] . '</td>';
-											echo '<td>' . $row["qty"] . '</td>';
-											echo '<td>' . $row["status"] . '</td>';
-											echo '<td>
-												<div class="form-button-action">
-													<a href="edit-product.php?id='. $row["id"] .'" data-toggle="tooltip"  title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
-														<i class="fa fa-edit"></i>
-													</a>
-													<a href="../controllers/products/delete_product.php?id='. $row["id"] .'" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-														<i class="fa fa-times"></i>
-													</a>
-												</div>
-											</td>';
-											echo '</tr>';
-										}
-										?>
-
-									</tbody>
-								</table>
-							</div>
+									<div class="col-md-12">
+										<div class="form-group ">
+											<label>สถานะ</label>
+											<br>
+											<label class="switch">
+												<input id="status" type="checkbox"  name="status">
+												<div class="slider"></div>
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="modal-footer border-0">
+									<button type="submit" class="btn btn-primary">ยินยัน</button>
+									<a href="category.php" class="btn btn-danger" data-dismiss="modal">ยกเลิก</a>
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -133,6 +165,8 @@
 </div>
 <!-- main-content closed -->
 
+
+
 <!--   Core JS Files   -->
 <script src="../assets/js/core/jquery.3.2.1.min.js"></script>
 <script src="../assets/js/core/popper.min.js"></script>
@@ -140,6 +174,15 @@
 <!-- jQuery UI -->
 <script src="../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
 <script src="../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+<!-- Moment JS -->
+<script src="../assets/js/plugin/moment/moment.min.js"></script>
+<!-- Bootstrap Toggle -->
+<script src="../assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+<!-- jQuery Scrollbar -->
+
+
+
+
 <!-- Bootstrap Toggle -->
 <script src="../assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js"></script>
 <!-- jQuery Scrollbar -->
@@ -150,6 +193,27 @@
 <script src="../assets/js/atlantis.min.js"></script>
 <!-- Atlantis DEMO methods, don't include it in your project! -->
 <script src="../assets/js/setting-demo2.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var checkbox = document.querySelector('input[type="checkbox"]');
+
+        checkbox.addEventListener('change', function() {
+            if (checkbox.checked) {
+                // do this
+                console.log(checkbox.checked);
+                console.log('Checked');
+                document.getElementById("status").value = checkbox.checked;
+            } else {
+                // do that
+                console.log(checkbox.checked);
+                console.log('Not checked');
+                document.getElementById("status").value = checkbox.checked;
+            }
+        });
+    });
+</script>
+
 <script>
 	$(document).ready(function() {
 		$('#basic-datatables').DataTable({});
