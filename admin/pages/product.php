@@ -17,6 +17,17 @@ function Categoryfk($dt,$rowp) {
 }
 ?>
 
+<style>
+
+	.description{
+		display: -webkit-box; 
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical ;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+</style>
+
 
 <!-- main-content -->
 <div class="main-panel">
@@ -78,11 +89,11 @@ function Categoryfk($dt,$rowp) {
 									<tbody>
 									<?php
 										include("../../config/connectdb.php");
-										$selectProducts = $conn->prepare("SELECT * ,pro.name as product_name,pro.image as product_image, cate.name as category_name,promo.name as promoton_name FROM tbl_products as pro LEFT JOIN tbl_categories as cate ON pro.category_id=cate.id LEFT JOIN tbl_promotions as promo ON pro.promotion_id=promo.id GROUP BY pro.id"); //Query
+										$selectProducts = $conn->prepare("SELECT * ,pro.id as product_id,pro.name as product_name,pro.image as product_image, cate.name as category_name,promo.name as promoton_name FROM tbl_products as pro LEFT JOIN tbl_categories as cate ON pro.category_id=cate.id LEFT JOIN tbl_promotions as promo ON pro.promotion_id=promo.id GROUP BY pro.id"); //Query
 										$selectProducts->execute();
 										while ($row = $selectProducts->fetch(PDO::FETCH_ASSOC)) {
 											echo '<tr>';
-											echo '<td>' . $row["id"] . '</td>';
+											echo '<td>' . $row["product_id"] . '</td>';
 											echo '<td >  <img class="img-upload-preview " width="50" height="50" src="../uploads/'. $row["product_image"] . '" alt="preview" style="object-fit: cover;"></td> ';
 											echo '<td>' . $row["product_name"] . '</td>';
 											echo '<td>' . $row["code"] . '</td>';
@@ -97,16 +108,16 @@ function Categoryfk($dt,$rowp) {
 							       
 										
 											// echo '<td>' . $promotion_name . '</td>';
-											echo '<td>' . $row["description"] . '</td>';
+											echo '<td class="description">' . $row["description"] . '</td>';
 											echo '<td>' . $row["price"] . '</td>';
 											echo '<td>' . $row["qty"] . '</td>';
 											echo '<td>' . $row["status"] . '</td>';
 											echo '<td>
 												<div class="form-button-action">
-													<a href="edit-product.php?id='. $row["id"] .'" data-toggle="tooltip"  title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
+													<a href="edit-product.php?id='. $row["product_id"] .'" data-toggle="tooltip"  title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
 														<i class="fa fa-edit"></i>
 													</a>
-													<a href="../controllers/products/delete_product.php?id='. $row["id"] .'" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+													<a href="../controllers/products/delete_product.php?id='. $row["product_id"] .'" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
 														<i class="fa fa-times"></i>
 													</a>
 												</div>

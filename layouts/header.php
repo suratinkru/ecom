@@ -84,7 +84,7 @@ echo '
                     <button type="button" class="btn btn-primary position-relative me-5">
                         <i class="fa-solid fa-cart-shopping" style="font-size: 20px;"></i>
                         <span class="position-absolute top-50 start-100 translate-middle badge rounded-pill bg-danger">
-                            0
+                        <?php echo array_sum($_SESSION['cart']) ; ?>
                             <span class="visually-hidden">unread messages</span>
                         </span>
                     </button>

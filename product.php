@@ -39,7 +39,7 @@ include_once "./layouts/header.php"
 
     <div class="row">
 
-      <!-- search -->
+        <!-- search -->
         <div class="col-12 mb-2">
             <div class="row p-1">
                 <div class="col-12 mb-0">
@@ -57,13 +57,13 @@ include_once "./layouts/header.php"
 
         </div>
 
-<!-- end search -->
+        <!-- end search -->
 
 
 
         <div class="col-12 ">
 
-          <!-- หมวดหมู่ -->
+            <!-- หมวดหมู่ -->
             <div class="row">
                 <!-- <h4 class="text-start">โปรโมชั่น</h4> -->
                 <div class="d-flex ">
@@ -72,7 +72,7 @@ include_once "./layouts/header.php"
                     <div class="ms-auto p-2">ทั้งหมด</div>
                 </div>
             </div>
-            
+
 
             <div class="row mb-5 row-cols-1 row-cols-md-6 g-1 ">
                 <div class="col-12 m-0 ">
@@ -195,10 +195,10 @@ include_once "./layouts/header.php"
                 </div>
             </div>
 
-               <!-- end หมวดหมู่ -->
+            <!-- end หมวดหมู่ -->
 
 
-               <!-- โปรโมชั่น -->
+            <!-- โปรโมชั่น -->
             <div class="row">
                 <!-- <h4 class="text-start">โปรโมชั่น</h4> -->
                 <div class="d-flex ">
@@ -221,7 +221,7 @@ include_once "./layouts/header.php"
                     <div class="card h-100">
                         <img src="https://tailybuddy.com/images/800-450.png" class="card-img-top" alt="..." style="height: 130px; object-fit: cover;">
                         <div class="card-body">
-                        <p class="card-title">จาก 500 เหลือ 400</p>
+                            <p class="card-title">จาก 500 เหลือ 400</p>
 
 
                         </div>
@@ -231,7 +231,7 @@ include_once "./layouts/header.php"
                     <div class="card h-100">
                         <img src="./assets/images/catproduct.jfif" class="card-img-top" alt="..." style="height: 130px; object-fit: cover;">
                         <div class="card-body">
-                        <p class="card-title">จาก 500 เหลือ 400</p>
+                            <p class="card-title">จาก 500 เหลือ 400</p>
 
 
                         </div>
@@ -241,7 +241,7 @@ include_once "./layouts/header.php"
                     <div class="card h-100">
                         <img src="./assets/images/catproduct.jfif" class="card-img-top" alt="..." style="height: 130px; object-fit: cover;">
                         <div class="card-body">
-                        <p class="card-title">จาก 500 เหลือ 400</p>
+                            <p class="card-title">จาก 500 เหลือ 400</p>
 
 
                         </div>
@@ -251,7 +251,7 @@ include_once "./layouts/header.php"
                     <div class="card h-100">
                         <img src="./assets/images/catproduct.jfif" class="card-img-top" alt="..." style="height: 130px; object-fit: cover;">
                         <div class="card-body">
-                        <p class="card-title">จาก 500 เหลือ 400</p>
+                            <p class="card-title">จาก 500 เหลือ 400</p>
 
 
                         </div>
@@ -261,17 +261,17 @@ include_once "./layouts/header.php"
                     <div class="card h-100">
                         <img src="./assets/images/catproduct.jfif" class="card-img-top" alt="..." style="height: 130px; object-fit: cover;">
                         <div class="card-body">
-                        <p class="card-title">จาก 500 เหลือ 400</p>
+                            <p class="card-title">จาก 500 เหลือ 400</p>
 
 
                         </div>
                     </div>
                 </div>
             </div>
-             <!-- end โปรโมชั่น -->
+            <!-- end โปรโมชั่น -->
 
 
-             <!-- สินค้าขายดี -->
+            <!-- สินค้าขายดี -->
             <div class="row ">
                 <!-- <h4 class="text-start">โปรโมชั่น</h4> -->
                 <div class="d-flex ">
@@ -340,7 +340,7 @@ include_once "./layouts/header.php"
                         </div>
                     </div>
                 </div>
-                
+
             </div>
 
             <!-- end สินค้าขายดี -->
@@ -356,220 +356,41 @@ include_once "./layouts/header.php"
                 </div>
             </div>
             <div class="row row-cols-1 row-cols-md-6 g-1 mb-5">
-                <div class="col-12">
-                    <div class="card h-100">
-                        <img src="./assets/images/catproduct.jfif" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">Nekko</h5>
-                            <p class="card-text">200 บาท </p>
-                           
-                            <a href="#" class="btn btn-warning"><i class="fa-solid fa-cart-plus"></i> ใส่ตะกร้า</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="card h-100">
-                        <img src="./assets/images/catproduct.jfif" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                        <div class="card-body">
-                        <h5 class="card-title">Nekko</h5>
-                            <p class="card-text">200 บาท </p>
-                           
-                            <a href="#" class="btn btn-warning"><i class="fa-solid fa-cart-plus"></i> ใส่ตะกร้า</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="card h-100">
-                        <img src="./assets/images/catproduct.jfif" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                        <div class="card-body">
-                        <h5 class="card-title">Nekko</h5>
-                            <p class="card-text">200 บาท </p>
-                           
-                            <a href="#" class="btn btn-warning"><i class="fa-solid fa-cart-plus"></i> ใส่ตะกร้า</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="card h-100">
-                        <img src="./assets/images/catproduct.jfif" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                        <div class="card-body">
-                        <h5 class="card-title">Nekko</h5>
-                            <p class="card-text">200 บาท </p>
-                           
-                            <a href="#" class="btn btn-warning"><i class="fa-solid fa-cart-plus"></i> ใส่ตะกร้า</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="card h-100">
-                        <img src="./assets/images/catproduct.jfif" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                        <div class="card-body">
-                        <h5 class="card-title">Nekko</h5>
-                            <p class="card-text">200 บาท </p>
-                           
-                            <a href="#" class="btn btn-warning"><i class="fa-solid fa-cart-plus"></i> ใส่ตะกร้า</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="card h-100">
-                        <img src="./assets/images/catproduct.jfif" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                        <div class="card-body">
-                        <h5 class="card-title">Nekko</h5>
-                            <p class="card-text">200 บาท </p>
-                           
-                            <a href="#" class="btn btn-warning"><i class="fa-solid fa-cart-plus"></i> ใส่ตะกร้า</a>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-12">
-                    <div class="card h-100">
-                        <img src="./assets/images/catproduct.jfif" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">Nekko</h5>
-                            <p class="card-text">200 บาท </p>
-                           
-                            <a href="#" class="btn btn-warning"><i class="fa-solid fa-cart-plus"></i> ใส่ตะกร้า</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="card h-100">
-                        <img src="./assets/images/catproduct.jfif" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                        <div class="card-body">
-                        <h5 class="card-title">Nekko</h5>
-                            <p class="card-text">200 บาท </p>
-                           
-                            <a href="#" class="btn btn-warning"><i class="fa-solid fa-cart-plus"></i> ใส่ตะกร้า</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="card h-100">
-                        <img src="./assets/images/catproduct.jfif" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                        <div class="card-body">
-                        <h5 class="card-title">Nekko</h5>
-                            <p class="card-text">200 บาท </p>
-                           
-                            <a href="#" class="btn btn-warning"><i class="fa-solid fa-cart-plus"></i> ใส่ตะกร้า</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="card h-100">
-                        <img src="./assets/images/catproduct.jfif" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                        <div class="card-body">
-                        <h5 class="card-title">Nekko</h5>
-                            <p class="card-text">200 บาท </p>
-                           
-                            <a href="#" class="btn btn-warning"><i class="fa-solid fa-cart-plus"></i> ใส่ตะกร้า</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="card h-100">
-                        <img src="./assets/images/catproduct.jfif" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                        <div class="card-body">
-                        <h5 class="card-title">Nekko</h5>
-                            <p class="card-text">200 บาท </p>
-                           
-                            <a href="#" class="btn btn-warning"><i class="fa-solid fa-cart-plus"></i> ใส่ตะกร้า</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="card h-100">
-                        <img src="./assets/images/catproduct.jfif" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                        <div class="card-body">
-                        <h5 class="card-title">Nekko</h5>
-                            <p class="card-text">200 บาท </p>
-                           
-                            <a href="#" class="btn btn-warning"><i class="fa-solid fa-cart-plus"></i> ใส่ตะกร้า</a>
-                        </div>
-                    </div>
-                </div>
+                <?php
+                include("./config/connectdb.php");
+                $selectProducts = $conn->prepare("SELECT * ,pro.id as product_id, pro.name as product_name,pro.image as product_image, cate.name as category_name,promo.name as promoton_name FROM tbl_products as pro LEFT JOIN tbl_categories as cate ON pro.category_id=cate.id LEFT JOIN tbl_promotions as promo ON pro.promotion_id=promo.id GROUP BY pro.id"); //Query
+                $selectProducts->execute();
+                while ($row = $selectProducts->fetch(PDO::FETCH_ASSOC)) {
+                    echo      '<div class="col-12">';
+                    echo      '<div class="card h-100">';
+                    echo         ' <img src="./admin/uploads/'. $row['product_image'].'" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">';
+                    echo          '<div class="card-body">';
+                    echo            ' <h5 class="card-title">'. $row['product_name'] . '</h5>';
+                    echo             '<p class="card-text"> '. $row['price'] . ' ฿</p>';
 
-                <div class="col-12">
-                    <div class="card h-100">
-                        <img src="./assets/images/catproduct.jfif" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">Nekko</h5>
-                            <p class="card-text">200 บาท </p>
-                           
-                            <a href="#" class="btn btn-warning"><i class="fa-solid fa-cart-plus"></i> ใส่ตะกร้า</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="card h-100">
-                        <img src="./assets/images/catproduct.jfif" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                        <div class="card-body">
-                        <h5 class="card-title">Nekko</h5>
-                            <p class="card-text">200 บาท </p>
-                           
-                            <a href="#" class="btn btn-warning"><i class="fa-solid fa-cart-plus"></i> ใส่ตะกร้า</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="card h-100">
-                        <img src="./assets/images/catproduct.jfif" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                        <div class="card-body">
-                        <h5 class="card-title">Nekko</h5>
-                            <p class="card-text">200 บาท </p>
-                           
-                            <a href="#" class="btn btn-warning"><i class="fa-solid fa-cart-plus"></i> ใส่ตะกร้า</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="card h-100">
-                        <img src="./assets/images/catproduct.jfif" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                        <div class="card-body">
-                        <h5 class="card-title">Nekko</h5>
-                            <p class="card-text">200 บาท </p>
-                           
-                            <a href="#" class="btn btn-warning"><i class="fa-solid fa-cart-plus"></i> ใส่ตะกร้า</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="card h-100">
-                        <img src="./assets/images/catproduct.jfif" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                        <div class="card-body">
-                        <h5 class="card-title">Nekko</h5>
-                            <p class="card-text">200 บาท </p>
-                           
-                            <a href="#" class="btn btn-warning"><i class="fa-solid fa-cart-plus"></i> ใส่ตะกร้า</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="card h-100">
-                        <img src="./assets/images/catproduct.jfif" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                        <div class="card-body">
-                        <h5 class="card-title">Nekko</h5>
-                            <p class="card-text">200 บาท </p>
-                           
-                            <a href="#" class="btn btn-warning"><i class="fa-solid fa-cart-plus"></i> ใส่ตะกร้า</a>
-                        </div>
-                    </div>
-                </div>
+                    echo               '<a href="product_detail.php?id='. $row['product_id'].'" class="btn btn-warning"><i class="fa-solid fa-cart-plus"></i> รายละเอียดสินค้า</a>';
+                    echo         '</div>';
+                    echo    '</div>';
+                    echo '</div>';
+                }
+
+                ?>
+
+
+
+                <!-- end สินค้า -->
             </div>
 
-            <!-- end สินค้า -->
         </div>
-
     </div>
-</div>
 
 
 
 
 
-<?php
+    <?php
 
-include_once "./layouts/footer.php"
+    include_once "./layouts/footer.php"
 
-?>
+    ?>
