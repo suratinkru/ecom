@@ -32,7 +32,7 @@ if (!$name) {
           text: "ชื่อสินค้า",
          type: "warning"
      }, function() {
-         window.location = "com.php"; //หน้าที่ต้องการให้กระโดดไป
+         window.location = "../../pages/product.php"; //หน้าที่ต้องการให้กระโดดไป
      });
         }, 1000);
     </script>';
@@ -64,7 +64,7 @@ $allowd_file_ext = array("jpg", "jpeg", "png");
             text: "You file extension must be .zip, .pdf or .docx 22",
             type: "warning"
         }, function() {
-            window.location = "com.php"; //หน้าที่ต้องการให้กระโดดไป
+            window.location = "../../pages/product.php"; //หน้าที่ต้องการให้กระโดดไป
         });
             }, 1000);
         </script>';
@@ -81,7 +81,7 @@ $allowd_file_ext = array("jpg", "jpeg", "png");
             text: "File too large!",
             type: "warning"
         }, function() {
-            window.location = "com.php"; //หน้าที่ต้องการให้กระโดดไป
+            window.location = "../../pages/product.php"; //หน้าที่ต้องการให้กระโดดไป
         });
             }, 1000);
         </script>';
@@ -174,7 +174,7 @@ include("../../../config/connectdb.php");
           text: "กรอกข้อมูล ไม่ถูกต้อง ลองใหม่อีกครั้ง",
          type: "warning"
      }, function() {
-         window.location = "com.php"; //หน้าที่ต้องการให้กระโดดไป
+         window.location = "../../pages/product.php"; //หน้าที่ต้องการให้กระโดดไป
      });
         }, 1000);
     </script>';

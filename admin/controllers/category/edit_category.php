@@ -27,7 +27,7 @@ if (!$name) {
           text: "ชื่อประเภทสินค้า",
          type: "warning"
      }, function() {
-         window.location = "../../pages/category.ph"; //หน้าที่ต้องการให้กระโดดไป
+         window.location = "../../pages/category.php"; //หน้าที่ต้องการให้กระโดดไป
      });
         }, 1000);
     </script>';

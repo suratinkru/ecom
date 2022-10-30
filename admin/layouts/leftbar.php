@@ -60,7 +60,7 @@
 							</a>
 						
 						</li>
-						<li class="nav-item <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/admin/pages/product.php' ? 'active' : ''  ?>">
+						<li class="nav-item <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/admin/pages/product.php' || $_SERVER['REQUEST_URI'] === '/ecommerce/admin/pages/add-product.php' ? 'active' : ''  ?>">
 							<a  href="product.php">
 								<i class="fas fa-th-list"></i>
 								<p>ข้อมูลรายการสินค้า</p>

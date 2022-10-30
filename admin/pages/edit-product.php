@@ -19,7 +19,6 @@ if ($id) {
     $stmt->execute(array(':id' => $id));
 
     $product = $stmt->fetch();
-
 }
 
 
@@ -126,9 +125,9 @@ if ($id) {
                         <div class="card-body">
 
 
-                        <form action="../controllers/products/add_product.php" method="post" enctype="multipart/form-data">
+                            <form action="../controllers/products/edit_product.php" method="post" enctype="multipart/form-data">
                                 <div class="row">
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-6">
                                         <div class="form-group ">
                                             <label>เลือกหมวดหมู่สินค้า</label>
 
@@ -140,73 +139,82 @@ if ($id) {
                                                 while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
 
 
+                                                    if ($row['id'] == $product['category_id']) {
                                                 ?>
-                                                    <option value="<?php echo $row['id'] ?>" selected><?php echo $row['name'] ?></option>
+                                                        <option value="<?php echo $row['id'] ?>" selected><?php echo $row['name'] ?></option>
 
+                                                    <?php
+                                                    } else {
+                                                    ?>
+                                                        <option value="<?php echo $row['id']; ?>"> <?php echo $row['name']; ?></option>
 
 
 
                                                 <?php
+                                                    }
                                                 }
                                                 ?>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-6">
                                         <div class="form-group ">
                                             <label>เลือกโปรโมชั่นสินค้า</label>
 
-                                            <select name="promotion_id" id="promotion_id" class="form-control rounded-0" >
+                                            <select name="promotion_id" id="promotion_id" class="form-control rounded-0">
                                                 <option disabled>กรุณาเลือก</option>
                                                 <?php
 
 
                                                 while ($rowp = $selectPromotion->fetch(PDO::FETCH_ASSOC)) {
 
-
+                                                    if ($rowp['id'] == $product['promotion_id']) {
                                                 ?>
-                                                    <option value="<?php echo $rowp['id'] ?>" selected><?php echo $rowp['name'] ?></option>
+                                                        <option value="<?php echo $rowp['id'] ?>" selected><?php echo $rowp['name'] ?></option>
 
-
-
+                                                    <?php
+                                                    } else {
+                                                    ?>
+                                                        <option value="<?php echo $rowp['id']; ?>"> <?php echo $rowp['name']; ?></option>
 
                                                 <?php
+                                                    }
                                                 }
                                                 ?>
                                             </select>
                                         </div>
                                     </div>
-                                   
+
 
                                     <div class="col-md-6">
                                         <div class="form-group ">
                                             <label>ชื่อสินค้า</label>
-                                            <input id="addName" type="text" name="name" class="form-control" placeholder="name" required>
+                                            <input id="addName" type="text" name="name" value="<?= $product['name']; ?>" class="form-control" placeholder="name" required>
                                         </div>
                                     </div>
-                               
+
                                     <div class="col-md-6">
                                         <div class="form-group ">
                                             <label>รหัสสินค้า</label>
-                                            <input id="addName" type="text" name="code" class="form-control" placeholder="code" required>
+                                            <input id="addName" type="text" name="code" value="<?= $product['code']; ?>" class="form-control" placeholder="code" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group ">
                                             <label>ราคาสินค้า</label>
-                                            <input id="addName" type="number" name="price" class="form-control" placeholder="0" required>
+                                            <input id="addName" type="number" name="price" value="<?= $product['price']; ?>" class="form-control" placeholder="0" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group ">
                                             <label>จำนวนสินค้า</label>
-                                            <input id="addName" type="number" name="qty" class="form-control" placeholder="1" required>
+                                            <input id="addName" type="number" name="qty" value="<?= $product['qty']; ?>" class="form-control" placeholder="1" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group ">
                                             <label>ส่วนลด</label>
-                                            <input id="addName" type="number" name="discount" class="form-control" placeholder="0" required>
+                                            <input id="addName" type="number" name="discount" value="<?= $product['discount']; ?>" class="form-control" placeholder="0" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -214,12 +222,12 @@ if ($id) {
                                             <label>สถานะ</label>
                                             <br>
                                             <label class="switch">
-                                                <input id="status" type="checkbox" name="status">
+                                                <input id="status" type="checkbox" name="status" <?= $product['status'] == 'on' ? 'checked' : ''; ?>>
                                                 <div class="slider"></div>
                                             </label>
                                         </div>
                                     </div>
-                              
+
 
                                     <div class="col-md-6 pr-0">
                                         <div class="form-group ">
@@ -227,8 +235,8 @@ if ($id) {
 
 
                                             <div class="input-file input-file-image text-center">
-                                                <img class="img-upload-preview w-100" height="300" src="http://placehold.it/100x100" alt="preview" style="object-fit: cover;">
-                                                <input type="file" class="form-control form-control-file" id="uploadImg" name="image" accept="image/*" required>
+                                                <img class="img-upload-preview w-100" height="300" src="../uploads/<?= $product['image']; ?>" alt="preview" style="object-fit: cover;">
+                                                <input type="file" class="form-control form-control-file" id="uploadImg" name="image" value="<?= $product['image']; ?>" accept="image/*" >
                                                 <label for="uploadImg" class="btn btn-primary btn-round btn-lg"><i class="fa fa-file-image"></i> Upload a Image</label>
                                             </div>
 
@@ -237,13 +245,15 @@ if ($id) {
                                     <div class="col-md-6">
                                         <div class="form-group ">
                                             <label>รายละเอียดสินค้า</label>
-                                            <textarea name="description" class="form-control" rows="5"  placeholder="description" required></textarea>
-                                           
+                                            <textarea name="description" class="form-control" rows="5" placeholder="description" required> <?php echo htmlspecialchars(stripslashes($product['description'])); ?></textarea>
+
                                         </div>
                                     </div>
+                                    <input id="status" type="hidden" name="id" value="<?= $product['id']; ?>"  >
+
                                 </div>
                                 <div class="modal-footer border-0">
-                                    <button type="submit" class="btn btn-primary">ยินยัน</button>
+                                    <button type="submit"  class="btn btn-primary">ยินยัน</button>
                                     <a href="product.php" class="btn btn-danger" data-dismiss="modal">ยกเลิก</a>
                                 </div>
                             </form>

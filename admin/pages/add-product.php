@@ -78,13 +78,13 @@ include("../controllers/promotion/list_promotion.php");
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="#">รายการประเภทสินค้า</a>
+                        <a href="#">รายการสินค้า</a>
                     </li>
                     <li class="separator">
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="#">เพิ่มประเภทสินค้า</a>
+                        <a href="#">เพิ่มสินค้า</a>
                     </li>
 
                 </ul>
@@ -96,11 +96,11 @@ include("../controllers/promotion/list_promotion.php");
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title"> เพิ่มประเภทสินค้า</h4>
+                                <h4 class="card-title"> เพิ่มสินค้า</h4>
 
                                 <!-- <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
 									<i class="fa fa-plus"></i>
-									เพิ่มประเภทสินค้า
+									เพิ่มสินค้า
 								</button> -->
                             </div>
                         </div>
@@ -109,7 +109,7 @@ include("../controllers/promotion/list_promotion.php");
 
                             <form action="../controllers/products/add_product.php" method="post" enctype="multipart/form-data">
                                 <div class="row">
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-6">
                                         <div class="form-group ">
                                             <label>เลือกหมวดหมู่สินค้า</label>
 
@@ -133,7 +133,7 @@ include("../controllers/promotion/list_promotion.php");
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-6">
                                         <div class="form-group ">
                                             <label>เลือกโปรโมชั่นสินค้า</label>
 

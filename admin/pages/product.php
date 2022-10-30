@@ -4,6 +4,17 @@
 <?php include_once "../layouts/leftbar.php" ?>
 
 <?php include("../controllers/category/list_category.php");
+include("../controllers/promotion/list_promotion.php");
+
+
+$rowc = $select->fetch(PDO::FETCH_ASSOC);
+$rowp = $selectPromotion->fetch(PDO::FETCH_ASSOC);
+
+function Categoryfk($dt,$rowp) {
+
+	print_r($rowp);
+	return "rowp";
+}
 ?>
 
 
@@ -67,16 +78,25 @@
 									<tbody>
 									<?php
 										include("../../config/connectdb.php");
-										$select = $conn->prepare("SELECT * FROM `tbl_products` ORDER BY `id`;"); //Query
-										$select->execute();
-										while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+										$selectProducts = $conn->prepare("SELECT * ,pro.name as product_name,pro.image as product_image, cate.name as category_name,promo.name as promoton_name FROM tbl_products as pro LEFT JOIN tbl_categories as cate ON pro.category_id=cate.id LEFT JOIN tbl_promotions as promo ON pro.promotion_id=promo.id GROUP BY pro.id"); //Query
+										$selectProducts->execute();
+										while ($row = $selectProducts->fetch(PDO::FETCH_ASSOC)) {
 											echo '<tr>';
 											echo '<td>' . $row["id"] . '</td>';
-											echo '<td >  <img class="img-upload-preview " width="50" height="50" src="../uploads/'. $row["image"] . '" alt="preview" style="object-fit: cover;"></td> ';
-											echo '<td>' . $row["name"] . '</td>';
+											echo '<td >  <img class="img-upload-preview " width="50" height="50" src="../uploads/'. $row["product_image"] . '" alt="preview" style="object-fit: cover;"></td> ';
+											echo '<td>' . $row["product_name"] . '</td>';
 											echo '<td>' . $row["code"] . '</td>';
-											echo '<td>' . $row["category_id"] . '</td>';
-											echo '<td>' . $row["promotion_id"] . '</td>';
+										
+
+											
+	                                        echo '<td>' . $row["category_name"]  . '</td>';			            		
+											echo '<td>' . $row["promoton_name"] . '</td>';		
+												
+									
+
+							       
+										
+											// echo '<td>' . $promotion_name . '</td>';
 											echo '<td>' . $row["description"] . '</td>';
 											echo '<td>' . $row["price"] . '</td>';
 											echo '<td>' . $row["qty"] . '</td>';
