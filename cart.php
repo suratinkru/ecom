@@ -2,68 +2,39 @@
 
     include_once "./layouts/header.php";
 
-    // session_start();
-    // unset($_SESSION['cart']);
-  
-	// $act = $_GET['act'];
 
-    // // echo "<meta http-equiv='refresh' content='0'>";
-	// if($act=='update')
-	// {
-
-    //     if (isset($_POST['amount'])) {
-    //         $amount_array = $_POST['amount'];
-    //         foreach($amount_array as $p_id=>$amount)
-    //         {
-    //             $_SESSION['cart'][$p_id]=$amount;
-    //         }
-    //     }
-		
-	// }else {
-    //     $p_id = $_GET['p_id']; 
-    //     if($act=='add' && !empty($_GET['p_id']))
-            
-    //     {
-          
-    //         if(isset($_SESSION['cart'][$p_id]))
-    //         {
-    //             // $_SESSION['cart'][$p_id]++;
-    //         }
-    //         else
-    //         {
-    //             $_SESSION['cart'][$p_id]=1;
-    //         }
-    
-          
-    //     }
-    
-    //     if($act=='remove' && !empty($p_id))  //ยกเลิกการสั่งซื้อ
-    //     {
-    //         unset($_SESSION['cart'][$p_id]);
-    //     }
-    
-    // }
 
 
 ?>
 
-
 <div class="container">
+<div class="row mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mt-3">
+                <li class="breadcrumb-item"><a href="product.php">สินค้า</a></li>
+                <li class="breadcrumb-item active" aria-current="page">ตะกร้าสินค้า</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<div class="container bg-white rounded">
 
-<div class="row mt-5">
+<div class="row mt-2">
 
 
 <form id="frmcart" name="frmcart" method="post" action="./controllers/cart.php?act=update">
 
 <div class="table-responsive">
+<div class="d-flex justify-content-center mb-3 mt-3"><b>ตะกร้าสินค้า</b></div>
   <table width="600" border="0" align="center" class="table table-striped table-hover">
   <thead class="table-Info">
-    <tr>
-      <td colspan="5" bgcolor="#CCCCCC">
+    <!-- <tr style="background-color: white;">
+      <td colspan="6" bgcolor="#CCCCCC">
       <b>ตะกร้าสินค้า</span></td>
-    </tr>
+    </tr> -->
  
     <tr>
+      <td bgcolor="#EAEAEA">รูปภาพสินค้า</td>
       <td bgcolor="#EAEAEA">สินค้า</td>
       <td align="center" bgcolor="#EAEAEA">ราคา</td>
       <td align="center" bgcolor="#EAEAEA">จำนวน</td>
@@ -86,6 +57,8 @@ if(!empty($_SESSION['cart']))
 		$total += $sum;
         echo "<tbody>";
 		echo "<tr>";
+        // echo "<td width='200'>" . $row["name"] . "</td>";
+        echo '<td width="100" >  <img class="img-upload-preview " width="50" height="50" src="./admin/uploads/'. $row["image"] . '" alt="preview" style="object-fit: cover;"></td> ';
 		echo "<td width='200'>" . $row["name"] . "</td>";
 		echo "<td width='46' align='center'>" .number_format($row["price"],2) . "</td>";
 		echo "<td width='57' align='center'>";  
@@ -96,7 +69,7 @@ if(!empty($_SESSION['cart']))
 		echo "</tr>";
 	}
 	echo "<tr>";
-  	echo "<td colspan='3' bgcolor='#CEE7FF' align='center'><b>ราคารวม</b></td>";
+  	echo "<td colspan='4' bgcolor='#CEE7FF' align='lerft'><b>ราคารวม</b></td>";
   	echo "<td align='center' bgcolor='#CEE7FF'>"."<b>".number_format($total,2)."</b>"."</td>";
   	echo "<td align='left' bgcolor='#CEE7FF'></td>";
 	echo "</tr>";
@@ -104,8 +77,8 @@ if(!empty($_SESSION['cart']))
 }
 ?>
 <tr>
-<td><a href="product.php">กลับหน้ารายการสินค้า</a></td>
-<td colspan="4" align="right">
+<!-- <td><a href="product.php">กลับหน้ารายการสินค้า</a></td> -->
+<td colspan="6" align="right">
     <input type="submit" name="button" id="button" value="ปรับปรุง" class="btn btn-light" />
     <input type="button" name="Submit2" value="สั่งซื้อ" class="btn btn-success" onclick="window.location='confirm.php';" />
 </td>

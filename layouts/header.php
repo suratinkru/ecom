@@ -47,15 +47,45 @@ echo '
             font-family: 'Prompt', sans-serif;
             background-color: whitesmoke;
         }
+        .search {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+    }
+
+    .bt-search {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+        border-bottom-right-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+
+    .ts-search {
+        text-align: start;
+        color: #0dcaf0;
+    }
     </style>
 </head>
 
 <body>
 
 
+    <div style="background: rgb(241,155,255);
+background: linear-gradient(90deg, rgba(241,155,255,1) 0%, rgba(126,104,231,1) 35%, rgba(37,10,247,1) 100%);">
+        <div class="container">
+
+        <div class="d-flex bd-highlight">
+  <div class=" flex-grow-1 bd-highlight"> <a href="login.php" type="button" class="btn border-0 me-2 text-white"><i class="fa-solid fa-phone-volume"></i> +6684092629</a></div>
+  <div class=" bd-highlight"><button type="button" class="btn   border-0"><i class="fa-brands fa-line text-white" style="font-size: 20px;"></i></button></div>
+  <div class=" bd-highlight"><button type="button" class="btn  me-2 border-0"><i class="fa-brands fa-facebook text-white" style="font-size: 20px;"></i></button></div>
+</div>
+           
+        </div>
+    </div>
 
 
-    <nav class="navbar navbar-expand-lg bg-primary p-2">
+    <nav class="navbar navbar-expand-lg bg-white p-2 sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#">LOGO</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,51 +94,59 @@ echo '
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link  <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/index.php' ? 'text-warning' : 'text-white'  ?>" aria-current="page" href="index.php">หน้าหลัก</a>
+                        <a class="nav-link  <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/index.php' ? 'text-warning' : 'text-dark'  ?>" aria-current="page" href="index.php">หน้าหลัก</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/product.php' ? 'text-warning' : 'text-white'  ?>" href="product.php">สินค้า</a>
+                        <a class="nav-link <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/product.php' ? 'text-warning' : 'text-dark'  ?>" href="product.php">สินค้า</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/pay.php' ? 'text-warning' : 'text-white'  ?>" href="pay.php">แจ้งชำระเงิน</a>
+                        <a class="nav-link  <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/pay.php' ? 'text-warning' : 'text-dark'  ?>" href="pay.php">แจ้งชำระเงิน</a>
                     </li>
-                    
+
                     <li class="nav-item">
-                        <a class="nav-link  <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/about-us.php' ? 'text-warning' : 'text-white'  ?>" href="about-us.php">เกี่ยวกับเรา</a>
+                        <a class="nav-link  <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/about-us.php' ? 'text-warning' : 'text-dark'  ?>" href="about-us.php">เกี่ยวกับเรา</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/contact.php' ? 'text-warning' : 'text-white'  ?>" href="contact.php">ติดต่อ</a>
+                        <a class="nav-link  <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/contact.php' ? 'text-warning' : 'text-dark'  ?>" href="contact.php">ติดต่อ</a>
                     </li>
                 </ul>
                 <div class="d-flex">
-                    <button type="button" class="btn btn-primary position-relative me-5">
-                        <i class="fa-solid fa-cart-shopping" style="font-size: 20px;"></i>
+                <form action="search.php" class="d-flex mb-0" role="search">
+                        <input class="form-control form-control-sm search" type="search" name="name" placeholder="ค้นหา" aria-label="Search">
+                        <button class="btn btn-success bt-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                    <a href="cart.php" class="btn border-0 position-relative me-5 <?php if (!empty($_SESSION['id'])) { echo 'pt-3';}?>">
+                        <i class="fa-solid fa-cart-shopping text-success" style="font-size: 20px;"></i>
                         <span class="position-absolute top-50 start-100 translate-middle badge rounded-pill bg-danger">
-                        <?php echo array_sum($_SESSION['cart']) ; ?>
+                            <?php if (!empty($_SESSION['cart'])) {
+                                echo array_sum($_SESSION['cart']);
+                            } else {
+                                echo '0';
+                            }  ?>
                             <span class="visually-hidden">unread messages</span>
                         </span>
-                    </button>
-                 
-                    <button type="button" class="btn   border-0"><i class="fa-brands fa-line text-white" style="font-size: 20px;"></i></button>
-                    <button type="button" class="btn  me-2 border-0"><i class="fa-brands fa-facebook text-white" style="font-size: 20px;"></i></button>
+                        </a>
+
+                    <!-- <button type="button" class="btn   border-0"><i class="fa-brands fa-line text-white" style="font-size: 20px;"></i></button>
+                    <button type="button" class="btn  me-2 border-0"><i class="fa-brands fa-facebook text-white" style="font-size: 20px;"></i></button> -->
 
                     <?php if (empty($_SESSION['id'])) { ?>
-                        
-                        <a href="login.php" type="button" class="btn btn-outline-light me-2">เข้าสู่ระบบ</a>
-                        <a href="register.php" type="button" class="btn btn-warning">สมัครสมาชิก</a>
+
+                        <a href="login.php" type="button" class="btn border-0 me-2 text-dark"><i class="fa-solid fa-right-to-bracket"></i> เข้าสู่ระบบ</a>
+                        <a href="register.php" type="button" class="btn border-0 text-dark"><i class="fa-regular fa-registered"></i> สมัครสมาชิก</a>
 
                     <?php } else { ?>
 
                         <!-- <div class="p-2" style="margin-top: 5px;">
                             <img src="./assets/images/profile-icon-9.png" class="rounded-circle" alt="..." style="width: 30px; border: 1px solid white; background: white;">
                         </div> -->
-                        <div class="">
-                            <!-- <h6 style="margin-top: 10px;"><?php echo $_SESSION['username'] ?></h6> -->
+                        <div class="text-dark">
+                            
                             <ul class="navbar-nav">
                                 <li class="nav-link text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="./assets/images/profile-icon-9.png" class="rounded-circle" alt="..." style="width: 30px; border: 1px solid white; background: white;"></li>
                                 <li class="nav-item dropdown">
-                                    
-                                    <a class="nav-link dropdown-toggle text-white mt-1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+                                    <a class="nav-link dropdown-toggle text-dark mt-1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <?php echo $_SESSION['username'] ?>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-dark">

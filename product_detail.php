@@ -119,7 +119,7 @@ if(!empty($_GET['id'])) {
                         <div class="col-md-6 " style="background-color: rgb(0 0 0 / 8%);">
                             <div class="product p-4">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <div class="d-flex align-items-center"> <i class="fa fa-long-arrow-left"></i> <span class="ml-1">Back</span> </div> <i class="fa fa-shopping-cart text-muted"></i>
+                                    <a href="product.php" class="d-flex align-items-center"> <i class="fa fa-long-arrow-left"></i> <span class="ml-1">Back</span> </a> <i class="fa fa-shopping-cart text-muted"></i>
                                 </div>
                                 <div class="mt-4 mb-3">
                                      <!-- <span class="text-uppercase text-muted brand"></span> -->
