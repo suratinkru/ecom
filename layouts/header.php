@@ -115,9 +115,9 @@ background: linear-gradient(90deg, rgba(241,155,255,1) 0%, rgba(126,104,231,1) 3
                         <input class="form-control form-control-sm search" type="search" name="name" placeholder="ค้นหา" aria-label="Search">
                         <button class="btn btn-success bt-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
-                    <a href="cart.php" class="btn border-0 position-relative me-5 <?php if (!empty($_SESSION['id'])) { echo 'pt-3';}?>">
+                    <a href="cart.php" class="btn border-0 position-relative me-5 ">
                         <i class="fa-solid fa-cart-shopping text-success" style="font-size: 20px;"></i>
-                        <span class="position-absolute top-50 start-100 translate-middle badge rounded-pill bg-danger">
+                        <span class="position-absolute top-50 start-75 translate-middle badge rounded-pill bg-danger">
                             <?php if (!empty($_SESSION['cart'])) {
                                 echo array_sum($_SESSION['cart']);
                             } else {
@@ -142,11 +142,11 @@ background: linear-gradient(90deg, rgba(241,155,255,1) 0%, rgba(126,104,231,1) 3
                         </div> -->
                         <div class="text-dark">
                             
-                            <ul class="navbar-nav">
-                                <li class="nav-link text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="./assets/images/profile-icon-9.png" class="rounded-circle" alt="..." style="width: 30px; border: 1px solid white; background: white;"></li>
-                                <li class="nav-item dropdown">
+                            <ul class="navbar-nav ">
+                                <li class="nav-link text-white p-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="./assets/images/profile-icon-9.png" class="rounded-circle" alt="..." style="width: 30px; border: 1px solid white; background: white;"></li>
+                                <li class="nav-item dropdown p-0">
 
-                                    <a class="nav-link dropdown-toggle text-dark mt-1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle text-dark mt-1 p-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <?php echo $_SESSION['username'] ?>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-dark">

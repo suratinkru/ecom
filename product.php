@@ -90,25 +90,7 @@ include("./config/connectdb.php");
 
     <div class="row">
 
-        <!-- search -->
-        <!-- <div class="col-12 mb-2">
-            <div class="row p-1">
-                <div class="col-12 mb-0">
-                    <form class="d-flex mb-0" role="search">
-                        <input class="form-control search" type="search" placeholder="ค้นหา" aria-label="Search">
-                        <button class="btn btn-success bt-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </form>
-                </div>
-                <div class="col-12 class=" text-left"">
-                    <p class="ts-search">คำที่ถูกค้นหาบ่อย: อาหารสุนัข, อาหารแมว, เห็บ, แผ่นรองฉี่, แชมพู, ทรายแมว, อาหารหมา, ชินชิล่า</p>
-                </div>
-
-
-            </div>
-
-        </div> -->
-
-        <!-- end search -->
+ 
 
 
 
@@ -130,7 +112,7 @@ include("./config/connectdb.php");
                     <div class="d-flex ">
                         <div class="p-2">หมวดหมู่</div>
 
-                        <div class="ms-auto p-2">ทั้งหมด</div>
+                        <a href="category.php" class="ms-auto p-2">ทั้งหมด</a>
                     </div>
                 </div>
 
@@ -218,8 +200,12 @@ include("./config/connectdb.php");
             <?php
 
 
-            $selectbest = $conn->prepare("SELECT *  FROM tbl_products where sell_number >= 10 ORDER BY `id`;"); //Query
-            $selectbest->execute();
+            $sell = 10;
+            $selectbest = $conn->prepare("SELECT * ,pro.id as product_id, pro.name as product_name,pro.image as product_image, cate.name as category_name,promo.name as promoton_name FROM tbl_products as pro ,tbl_categories as cate ,tbl_promotions as promo where pro.sell_number >= :sell and pro.category_id =cate.id and pro.promotion_id = promo.id");
+            $selectbest->execute(array(':sell' =>  $sell ));
+
+            // $selectbest = $conn->prepare("SELECT *  FROM tbl_products where sell_number >= 10 ORDER BY `id`;"); //Query
+            // $selectbest->execute();
             $probest = $selectbest->fetchAll(PDO::FETCH_ASSOC);
 
 
@@ -244,12 +230,14 @@ include("./config/connectdb.php");
                         if ($ib < 8) {
                             $ib += 1;
                     ?>
-                            <div class="col-md-1 smstyle" >
+                            <div class="col-12 " >
                                 <div class="card h-100">
-                                    <img src="./admin/uploads/<?php echo $link['image']  ?>" class="card-img-top" alt="..." style="height: 100px; object-fit: cover;">
+                                    <img src="./admin/uploads/<?php echo $link['product_image'] ; ?>" class="card-img-top" alt="..." style="height: 100px; object-fit: cover;">
                                     <div class="card-body">
-                                        <h6 class="card-title"><?php echo $link['name']; ?></h5>
-
+                                        <h6 class="card-title text-start"><?php echo $link['product_name']; ?></h5>
+                                        <div class="price d-flex flex-row align-items-center"> <span class="act-price">฿ <?php echo $link["price"] - $link["discount"] ;?> </span>
+                                        <div class="ml-2"> <small class="dis-price"> <?php echo $link["price"];?> </small> <span>- <?php echo $link["discount"] * 100 / $link["price"];?>% </span> </div>
+                                        </div>
                                             <div class=" d-flex justify-content-between align-items-center">
                                                 <!-- <h5 class="review-stat">Cleanliness</h5> -->
                                                 <div class="small-ratings">
