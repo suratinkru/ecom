@@ -164,15 +164,15 @@ include_once "./controllers/index.php";
     .title {
         color: #faea55;
 
-text-shadow: 4px 3px 0px #7A7A7A;
+        text-shadow: 4px 3px 0px #7A7A7A;
     }
 
     .ctname {
         text-align: center;
-    color: #313231;
-    text-shadow: 1px 1px 0px #ffffff;
-    font-weight: bold;
-    font-size: 18px;
+        color: #313231;
+        text-shadow: 1px 1px 0px #ffffff;
+        font-weight: bold;
+        font-size: 18px;
     }
 
 
@@ -183,29 +183,35 @@ text-shadow: 4px 3px 0px #7A7A7A;
 
     .imgAnimateCategory {
 
-animation-duration: 3s;
-animation-name: imganic;
-animation-iteration-count: infinite;
-animation-direction: alternate;
-/* transform: translate(284px, 442px) translate(-50%, -50%) translate3d(0px, 1.6427px, 0px) translate(0px, 2px) rotateX(-0.6975deg);  */
+        animation-duration: 3s;
+        animation-name: imganic;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        /* transform: translate(284px, 442px) translate(-50%, -50%) translate3d(0px, 1.6427px, 0px) translate(0px, 2px) rotateX(-0.6975deg);  */
 
-}
+    }
 
-@keyframes imganic {
-from {
-
-   
-    margin-top: 2%;
-    /* width: 100%; */
-}
-
-to {
+    @keyframes imganic {
+        from {
 
 
-    margin-top: 0%;
-    /* width: 100%; */
-}
-}
+            margin-top: 2%;
+            /* width: 100%; */
+        }
+
+        to {
+
+
+            margin-top: 0%;
+            /* width: 100%; */
+        }
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        border: 1px solid #cecece;
+        z-index: 500;
+    }
 </style>
 
 
@@ -217,9 +223,9 @@ to {
                 <div>
                     <h1 class="title">Cat stores</h1>
                     <div style="height: 90px;">
-                    <h2 id="demo" class="mb-5  "></h2>
+                        <h2 id="demo" class="mb-5  "></h2>
                     </div>
-                   
+
                     <div class="d-flex flex-row mb-3 mt-5">
                         <?php
 
@@ -250,7 +256,7 @@ to {
 
 <div class="container mt-5">
 
-
+    <h2 style="color: #dc3545;">สินค้าใหม่ของเราวันนี้</h2>
     <div class="row row-cols-1 row-cols-md-6 g-1 mb-5  text-center p-1">
 
         <?php
@@ -264,7 +270,7 @@ to {
                         <div class="card h-100">
                             <img src="./assets/images/ch.jpg" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
                             <div class="card-body">
-                                <h5 class="card-title text-start text-dart"><?php echo $item['name']  ?></h5>
+                                <h5 class="card-title text-start " style="color: #636464;"><?php echo $item['name']  ?></h5>
 
 
                                 <div class="price d-flex flex-row align-items-center"> <span class="act-price">฿ <?php echo $item["price"] - $item["discount"]; ?></span>
@@ -294,22 +300,69 @@ to {
     </div>
 </div>
 
+
+
+
+
+
+<div class="container">
+    <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+    <div class="row">
+        <div class="col-md-8"><img src="./assets/images/cat1.jpg" class="img-fluid" alt="..."></div>
+        <div class="col-6 col-md-4">
+            <p>ทาสแมวทั้งหลายที่มีแมวเป็นเจ้านายต้องพิถีพิถันในการเลือก อาหารแมว ให้ถูกปากเจ้านาย และควรดูสารอาหาร ปริมาณ และการเก็บรักษาร่วมด้วย เพื่อให้แมวสุขภาพดี ได้รับสารอาหารที่ครบถ้วน และได้กินอย่างเอร็ดอร่อย อย่าลืมสังเกตแมวว่าแมวขแงเรามีอาการแพ้หรือสิ่งผิดปกติหรือไม่ เมื่อเจออาหารแมวยี่ห้อหอมอร่อยที่แมวชอบแล้ว ทางที่ดีควรเปลี่ยนยี่ห้ออาหารหรือสลับอาหารให้แมวกิน เพราะการกินอาหารเดิม ๆ อาจทำให้แมวเบื่ออาหารได้ อาหารแมวยังมีหลากหลายประเภทให้เลือก แมวเล็ก ๆ ควรเลือกอาหารสำหรับแมวเด็กโดยเฉพาะ หรือแมวที่เป็นโรคอย่างโรคไต อาหารที่เลือกให้เขา ต้องมีคุณภาพและเป็นสูตรลดเค็มโดยเฉพาะ เว็บไซต์ iPrice Thailand มีเคล็ดลับดี ๆ ที่จะทำให้คุณได้เลือกซื้ออาหารแมวคุณภาพดี อาหารแมวราคาถูก จากร้านค้าออนไลน์ชั้นนำ</p>
+        </div>
+    </div>
+
+
+</div>
+
+
+<div class="container-fulid mt-4 " style="background-color: #ec99fe;">
+<div class="container p-2">
+    <div class="row mt-5">
+        <h2 class="text-center" style="    background-color: violet;">ทำไมอาหารสัตว์เลี้ยงจากโปรตีนแมลงของโยราถึงดีกว่า?</h2>
+    </div>
+  <div class="row">
+    <div class="col">
+    <img src="https://static.wixstatic.com/media/df7372_fc6ec05117304b698c0a2f3062548894~mv2.png/v1/crop/x_117,y_332,w_1172,h_1147/fill/w_260,h_259,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/yora-shelf-talker_0.png" alt="yora-shelf-talker_0.png" style="width: 260px; height: 259px; object-fit: cover; object-position: 50% 50%;" fetchpriority="high">
+    </div>
+    <div class="col">
+    <img src="https://static.wixstatic.com/media/df7372_c2b7a5cf2898476cbebe67556e9791de~mv2.png/v1/fill/w_240,h_252,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Edited%20-%20yora%20shelf%20talker%20-01.png" alt="Edited - yora shelf talker -01.png" style="width: 240px; height: 252px; object-fit: cover; object-position: 50% 50%;" fetchpriority="high">
+    </div>
+    <div class="col">
+    <img src="https://static.wixstatic.com/media/df7372_fc6ec05117304b698c0a2f3062548894~mv2.png/v1/crop/x_2443,y_287,w_1118,h_1197/fill/w_245,h_240,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/yora-shelf-talker_0.png" alt="yora-shelf-talker_0.png" style="width: 245px; height: 240px; object-fit: cover; object-position: 50% 50%;" fetchpriority="high">
+    </div>
+
+    <div class="col">
+    <img src="https://static.wixstatic.com/media/df7372_fc6ec05117304b698c0a2f3062548894~mv2.png/v1/crop/x_3578,y_313,w_931,h_1112/fill/w_206,h_246,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/yora-shelf-talker_0.png" alt="yora-shelf-talker_0.png" style="width: 206px; height: 246px; object-fit: cover; object-position: 50% 50%;" fetchpriority="high">
+    </div>
+
+  </div>
+</div>
+</div>
+
+
+
+
+
 <script>
-var i = 0;
-var txt = 'อาหารแมว ขนมสัตว์เลี้ยง ของใช้สัตว์เลี้ยง ผลิตภัณฑ์อาบน้ำ/บำรุงขน เกรดพรีเมี่ยม';
-var speed = 100;
-typeWriter();
-function typeWriter() {
-  if (i < txt.length) {
-    document.getElementById("demo").innerHTML += txt.charAt(i);
-    i++;
-    setTimeout(typeWriter, speed);
-  }else{
-   document.getElementById("demo").innerHTML = "";
-   i =0;
-  typeWriter();
-  }
-}
+    var i = 0;
+    var txt = 'อาหารแมว ขนมสัตว์เลี้ยง ของใช้สัตว์เลี้ยง ผลิตภัณฑ์อาบน้ำ/บำรุงขน เกรดพรีเมี่ยม';
+    var speed = 100;
+    typeWriter();
+
+    function typeWriter() {
+        if (i < txt.length) {
+            document.getElementById("demo").innerHTML += txt.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+        } else {
+            document.getElementById("demo").innerHTML = "";
+            i = 0;
+            typeWriter();
+        }
+    }
 </script>
 
 <?php
