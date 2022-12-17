@@ -12,43 +12,67 @@
 
 
 
-<footer class="bg-primary py-5">
-  <div class="container">
+<div class="container-fulid bg-dark">
+<div class="container">
+  <footer class="py-5">
     <div class="row">
-      <div class="col-md-4 text-white">
-        <h4>About</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ornare, elit at dictum dictum, nisi nisi dictum nisi, eu ultricies nisi lacus a enim. Duis ullamcorper vehicula fermentum. Donec rutrum dapibus lacus, eu interdum dolor tincidunt vel.</p>
-      </div>
-      <div class="col-md-4 text-white">
-        <h4>Links</h4>
-        <ul class="list-unstyled">
-          <li><a href="#" class="text-white">Home</a></li>
-          <li><a href="#" class="text-white">About</a></li>
-          <li><a href="#" class="text-white">Contact</a></li>
+      <div class="col-6 col-md-2 mb-3">
+        <h5>Section</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
         </ul>
       </div>
-      <div class="col-md-4 text-white">
-        <h4>Contact</h4>
-        <p>
-          123 Main Street<br>
-          Anytown, USA 12345<br>
-          <a href="mailto:info@example.com" class="text-white">info@example.com</a>
-        </p>
-      </div>
-    </div>
-    <div class="row py-3 mt-5 border-top border-white">
-      <div class="col-md-6 text-md-left text-white">
-        Copyright &copy; 2021 Your Website
-      </div>
-      <div class="col-md-6 text-md-right">
-        <a href="#" class="text-white"><i class="fab fa-twitter fa-lg"></i></a>
-        <a href="#" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
-        <a href="#" class="text-white"><i class="fab fa-instagram fa-lg"></i></a>
-      </div>
-    </div>
-  </div>
-</footer>
 
+      <div class="col-6 col-md-2 mb-3">
+        <h5>Section</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-md-2 mb-3">
+        <h5>Section</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-5 offset-md-1 mb-3">
+        <form>
+          <h5>Subscribe to our newsletter</h5>
+          <p>Monthly digest of what's new and exciting from us.</p>
+          <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+            <label for="newsletter1" class="visually-hidden">Email address</label>
+            <input id="newsletter1" type="text" class="form-control" placeholder="Email address" fdprocessedid="v6yvd">
+            <button class="btn btn-primary" type="button" fdprocessedid="4yqkpd">Subscribe</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+      <p>© 2022 Company, Inc. All rights reserved.</p>
+      <ul class="list-unstyled d-flex">
+        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
+        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
+        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
+      </ul>
+    </div>
+  </footer>
+</div>
+</div>
 
 <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
