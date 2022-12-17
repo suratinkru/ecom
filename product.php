@@ -22,6 +22,10 @@ include("./config/connectdb.php");
 
     }
 
+    .card-img-top{
+        border: 0;
+        border-radius: 0;
+    }
     .bgcategory {
         background-color: white;
     }
@@ -151,7 +155,7 @@ include("./config/connectdb.php");
             <?php
 
 
-            $selectp = $conn->prepare("SELECT * ,pro.id as product_id, pro.name as product_name,pro.image as product_image, cate.name as category_name,promo.name as promoton_name ,promo.status as pstatus FROM tbl_products as pro LEFT JOIN tbl_categories as cate ON pro.category_id=cate.id LEFT JOIN tbl_promotions as promo ON pro.promotion_id=promo.id  GROUP BY pro.id"); //Query
+            $selectp = $conn->prepare("SELECT * FROM `tbl_promotions` ORDER BY `id`"); //Query
             $selectp->execute();
             $promotions = $selectp->fetchAll(PDO::FETCH_ASSOC);
 
@@ -167,7 +171,7 @@ include("./config/connectdb.php");
                     <div class="d-flex ">
                         <div class="p-2">โปรโมชั่น</div>
 
-                        <div class="ms-auto p-2">ทั้งหมด</div>
+                        <a href="promotion.php" class="ms-auto p-2">ทั้งหมด</a>
                     </div>
                 </div>
                 <div class="row mb-5 row-cols-1 row-cols-md-6 g-1">
@@ -175,18 +179,20 @@ include("./config/connectdb.php");
 
                     $i = 0;
                     foreach ($promotions as $row => $link) {
-                        if ($link['promoton_name'] != 'default' && $i < 8) {
+                        if ($link['name'] != 'default' && $i < 8) {
                             $i += 1;
                     ?>
                             <div class="col-md-2" >
+                            <a href="product_promotion.php?id=<?php echo $link['id']  ?>&name=<?php echo $link['name']  ?>">
                                 <div class="card h-100">
-                                    <img src="./admin/uploads/<?php echo $link['product_image']  ?>" class="card-img-top" alt="..." style="height: 130px; object-fit: cover;">
+                                    <img src="./admin/uploads/<?php echo $link['image']  ?>" class="card-img-top" alt="..." style="height: 130px; object-fit: cover;">
                                     <div class="card-body">
-                                        <h6 class="card-title"><?php echo $link['promoton_name'];
-                                                                echo $link['pstatus'] != 'off' ? '' : '<p class="text-danger">หมดโปร! </p>' ?></h5>
+                                        <h6 class="card-title"><?php echo $link['name'];
+                                                                echo $link['status'] != 'off' ? '' : '<p class="text-danger">หมดโปร! </p>' ?></h5>
 
                                     </div>
                                 </div>
+                            </a>
                             </div>
                     <?php }
                     } ?>
@@ -220,7 +226,7 @@ include("./config/connectdb.php");
                     <div class="d-flex ">
                         <div class="p-2">สินค้าขายดี</div>
 
-                        <div class="ms-auto p-2">ทั้งหมด</div>
+                        <a href="best-seller.php" class="ms-auto p-2">ทั้งหมด</a>
                     </div>
                 </div>
                 <div class="row mb-5 row-cols-1 row-cols-md-6 g-1">
@@ -231,28 +237,30 @@ include("./config/connectdb.php");
                             $ib += 1;
                     ?>
                             <div class="col-12 " >
-                                <div class="card h-100">
-                                    <img src="./admin/uploads/<?php echo $link['product_image'] ; ?>" class="card-img-top" alt="..." style="height: 100px; object-fit: cover;">
-                                    <div class="card-body">
-                                        <h6 class="card-title text-start"><?php echo $link['product_name']; ?></h5>
-                                        <div class="price d-flex flex-row align-items-center"> <span class="act-price">฿ <?php echo $link["price"] - $link["discount"] ;?> </span>
-                                        <div class="ml-2"> <small class="dis-price"> <?php echo $link["price"];?> </small> <span>- <?php echo $link["discount"] * 100 / $link["price"];?>% </span> </div>
-                                        </div>
-                                            <div class=" d-flex justify-content-between align-items-center">
-                                                <!-- <h5 class="review-stat">Cleanliness</h5> -->
-                                                <div class="small-ratings">
-                                                    <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                                    <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                                    <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                                    <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                                    <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                                    <span style="font-size: 10px;">(<?php echo $link['sell_number']; ?>)</span>
+                                <a href="product_detail.php?id=<?php echo $link['product_id'] ?>" >
+                                    <div class="card h-100">
+                                        <img src="./admin/uploads/<?php echo $link['product_image'] ; ?>" class="card-img-top" alt="..." style="height: 100px; object-fit: cover;">
+                                        <div class="card-body">
+                                            <h6 class="card-title text-start"><?php echo $link['product_name']; ?></h5>
+                                            <div class="price d-flex flex-row align-items-center"> <span class="act-price">฿ <?php echo $link["price"] - $link["discount"] ;?> </span>
+                                            <div class="ml-2"> <small class="dis-price"> <?php echo $link["price"];?> </small> <span>- <?php echo $link["discount"] * 100 / $link["price"];?>% </span> </div>
+                                            </div>
+                                                <div class=" d-flex justify-content-between align-items-center">
+                                                    <!-- <h5 class="review-stat">Cleanliness</h5> -->
+                                                    <div class="small-ratings">
+                                                        <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
+                                                        <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
+                                                        <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
+                                                        <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
+                                                        <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
+                                                        <span style="font-size: 10px;">(<?php echo $link['sell_number']; ?>)</span>
+                                                    </div>
+
                                                 </div>
 
-                                            </div>
-
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
 
 

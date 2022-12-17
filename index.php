@@ -2,7 +2,16 @@
 
 include_once "./layouts/header.php"
 
+
 ?>
+
+<?php
+
+include_once "./controllers/index.php";
+
+?>
+
+
 
 <style>
     #hero {
@@ -110,20 +119,23 @@ include_once "./layouts/header.php"
                     <h1>Cat stores</h1>
                     <h2 class="mb-5">อาหารแมว ขนมสัตว์เลี้ยง ของใช้สัตว์เลี้ยง ผลิตภัณฑ์อาบน้ำ/บำรุงขน เกรดพรีเมี่ยม</h2>
                     <div class="d-flex flex-row mb-3 mt-5">
-                        <div class="p-2"><img src="./assets/images/cat.jpg" class="rounded-circle" alt="..." width="100" height="100">
-                            <p style="text-align: center;">อาหารแมว</p>
+                        <?php 
+
+                        $ct = $selectCategory->fetchAll(PDO::FETCH_ASSOC);
+                        if (!empty($ct)) {
+
+                            foreach ($ct as $row => $item) { ?>
+                        <div class="p-2"><img src="./admin/uploads/<?php echo $item['image']  ?>" class="rounded-circle" alt="..." width="100" height="100">
+                            <p style="text-align: center;"><?php echo $item['name']  ?></p>
                         </div>
-                        <div class="p-2"><img src="./assets/images/cat.jpg" class="rounded-circle" alt="..." width="100" height="100">
-                            <p style="text-align: center;">ของเล่น</p>
-                        </div>
-                        <div class="p-2"><img src="./assets/images/cat.jpg" class="rounded-circle" alt="..." width="100" height="100">
-                            <p style="text-align: center;">ผลิตภัณฑ์บำรุง</p>
-                        </div>
+
+                        <?php }}   ?>
+               
                     </div>
                     <a href="product.php" class="btn btn-danger"><i class="fa-brands fa-shopify me-2"></i>ซื้อเลย</a>
                 </div>
             </div>
-            <div class="col-lg-6 d-lg-flex flex-lg-column align-items-stretch order-1 order-lg-2 hero-img aos-init aos-animate" data-aos="fade-up"> <img src="./assets/images/hero-img.jpeg" class="img-fluid" alt=""></div>
+            <div class="col-lg-6 d-lg-flex flex-lg-column align-items-stretch order-1 order-lg-2 hero-img aos-init aos-animate" data-aos="fade-up"> <img src="./assets/images/ch.jpg" class="img-fluid" alt=""></div>
         </div>
     </div>
 </section>
@@ -134,18 +146,22 @@ include_once "./layouts/header.php"
 
     <div class="row row-cols-1 row-cols-md-6 g-1 mb-5  text-center p-1">
 
+    <?php 
+    $Pd = $selectProduct->fetchAll(PDO::FETCH_ASSOC);
+                        if (!empty($Pd)) {
 
+                            foreach ($Pd as $row => $item) { ?>
 
         <div class="col-12">
             <a href="#">
                 <div class="card h-100">
-                    <img src="./assets/images/cat.jpg" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
+                    <img src="./assets/images/ch.jpg" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
                     <div class="card-body">
-                        <h5 class="card-title text-start text-dart">อาหารแมว</h5>
+                        <h5 class="card-title text-start text-dart"><?php echo $item['name']  ?></h5>
 
 
-                        <div class="price d-flex flex-row align-items-center"> <span class="act-price">฿200</span>
-                            <div class="ml-2"> <small class="dis-price"> 200 </small> <span>-50 % </span> </div>
+                        <div class="price d-flex flex-row align-items-center"> <span class="act-price">฿ <?php echo $item["price"] - $item["discount"] ;?></span>
+                            <div class="ml-2"> <small class="dis-price">  <?php echo $item["price"];?> </small> <span>- <?php echo $item["discount"] * 100 / $item["price"];?>%  </span> </div>
                         </div>
                         <div class=" d-flex justify-content-between align-items-center">
                             <div class="small-ratings">
@@ -163,306 +179,7 @@ include_once "./layouts/header.php"
             </a>
         </div>
 
-        <div class="col-12">
-            <a href="#">
-                <div class="card h-100">
-                    <img src="./assets/images/cat.jpg" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title text-start text-dart">อาหารแมว</h5>
-
-
-                        <div class="price d-flex flex-row align-items-center"> <span class="act-price">฿200</span>
-                            <div class="ml-2"> <small class="dis-price"> 200 </small> <span>-50 % </span> </div>
-                        </div>
-                        <div class=" d-flex justify-content-between align-items-center">
-                            <div class="small-ratings">
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <span style="font-size: 10px;">(10)</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-12">
-            <a href="#">
-                <div class="card h-100">
-                    <img src="./assets/images/cat.jpg" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title text-start text-dart">อาหารแมว</h5>
-
-
-                        <div class="price d-flex flex-row align-items-center"> <span class="act-price">฿200</span>
-                            <div class="ml-2"> <small class="dis-price"> 200 </small> <span>-50 % </span> </div>
-                        </div>
-                        <div class=" d-flex justify-content-between align-items-center">
-                            <div class="small-ratings">
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <span style="font-size: 10px;">(10)</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </a>
-        </div>
-
-
-        <div class="col-12">
-            <a href="#">
-                <div class="card h-100">
-                    <img src="./assets/images/cat.jpg" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title text-start text-dart">อาหารแมว</h5>
-
-
-                        <div class="price d-flex flex-row align-items-center"> <span class="act-price">฿200</span>
-                            <div class="ml-2"> <small class="dis-price"> 200 </small> <span>-50 % </span> </div>
-                        </div>
-                        <div class=" d-flex justify-content-between align-items-center">
-                            <div class="small-ratings">
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <span style="font-size: 10px;">(10)</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </a>
-        </div>
-
-
-        <div class="col-12">
-            <a href="#">
-                <div class="card h-100">
-                    <img src="./assets/images/cat.jpg" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title text-start text-dart">อาหารแมว</h5>
-
-
-                        <div class="price d-flex flex-row align-items-center"> <span class="act-price">฿200</span>
-                            <div class="ml-2"> <small class="dis-price"> 200 </small> <span>-50 % </span> </div>
-                        </div>
-                        <div class=" d-flex justify-content-between align-items-center">
-                            <div class="small-ratings">
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <span style="font-size: 10px;">(10)</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </a>
-        </div>
-
-
-        <div class="col-12">
-            <a href="#">
-                <div class="card h-100">
-                    <img src="./assets/images/cat.jpg" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title text-start text-dart">อาหารแมว</h5>
-
-
-                        <div class="price d-flex flex-row align-items-center"> <span class="act-price">฿200</span>
-                            <div class="ml-2"> <small class="dis-price"> 200 </small> <span>-50 % </span> </div>
-                        </div>
-                        <div class=" d-flex justify-content-between align-items-center">
-                            <div class="small-ratings">
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <span style="font-size: 10px;">(10)</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </a>
-        </div>
-
-
-        <div class="col-12">
-            <a href="#">
-                <div class="card h-100">
-                    <img src="./assets/images/cat.jpg" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title text-start text-dart">อาหารแมว</h5>
-
-
-                        <div class="price d-flex flex-row align-items-center"> <span class="act-price">฿200</span>
-                            <div class="ml-2"> <small class="dis-price"> 200 </small> <span>-50 % </span> </div>
-                        </div>
-                        <div class=" d-flex justify-content-between align-items-center">
-                            <div class="small-ratings">
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <span style="font-size: 10px;">(10)</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-12">
-            <a href="#">
-                <div class="card h-100">
-                    <img src="./assets/images/cat.jpg" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title text-start text-dart">อาหารแมว</h5>
-
-
-                        <div class="price d-flex flex-row align-items-center"> <span class="act-price">฿200</span>
-                            <div class="ml-2"> <small class="dis-price"> 200 </small> <span>-50 % </span> </div>
-                        </div>
-                        <div class=" d-flex justify-content-between align-items-center">
-                            <div class="small-ratings">
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <span style="font-size: 10px;">(10)</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-12">
-            <a href="#">
-                <div class="card h-100">
-                    <img src="./assets/images/cat.jpg" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title text-start text-dart">อาหารแมว</h5>
-
-
-                        <div class="price d-flex flex-row align-items-center"> <span class="act-price">฿200</span>
-                            <div class="ml-2"> <small class="dis-price"> 200 </small> <span>-50 % </span> </div>
-                        </div>
-                        <div class=" d-flex justify-content-between align-items-center">
-                            <div class="small-ratings">
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <span style="font-size: 10px;">(10)</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-12">
-            <a href="#">
-                <div class="card h-100">
-                    <img src="./assets/images/cat.jpg" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title text-start text-dart">อาหารแมว</h5>
-
-
-                        <div class="price d-flex flex-row align-items-center"> <span class="act-price">฿200</span>
-                            <div class="ml-2"> <small class="dis-price"> 200 </small> <span>-50 % </span> </div>
-                        </div>
-                        <div class=" d-flex justify-content-between align-items-center">
-                            <div class="small-ratings">
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <span style="font-size: 10px;">(10)</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-12">
-            <a href="#">
-                <div class="card h-100">
-                    <img src="./assets/images/cat.jpg" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title text-start text-dart">อาหารแมว</h5>
-
-
-                        <div class="price d-flex flex-row align-items-center"> <span class="act-price">฿200</span>
-                            <div class="ml-2"> <small class="dis-price"> 200 </small> <span>-50 % </span> </div>
-                        </div>
-                        <div class=" d-flex justify-content-between align-items-center">
-                            <div class="small-ratings">
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <span style="font-size: 10px;">(10)</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-12">
-            <a href="#">
-                <div class="card h-100">
-                    <img src="./assets/images/cat.jpg" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title text-start text-dart">อาหารแมว</h5>
-
-
-                        <div class="price d-flex flex-row align-items-center"> <span class="act-price">฿200</span>
-                            <div class="ml-2"> <small class="dis-price"> 200 </small> <span>-50 % </span> </div>
-                        </div>
-                        <div class=" d-flex justify-content-between align-items-center">
-                            <div class="small-ratings">
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
-                                <span style="font-size: 10px;">(10)</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </a>
-        </div>
+        <?php }}   ?>
 
 
         <!-- end สินค้า -->

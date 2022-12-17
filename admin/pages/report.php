@@ -158,14 +158,12 @@
 								<table id="add-row" class="display table table-striped table-hover">
 									<thead>
 										<tr>
-											<th  class="text-nowrap">ลำดับ</th>
+											<th>ลำดับ</th>
 											
-											<th  class="text-nowrap">รูปภาพหมวดหมู่สินค้า</th>
-											<th  class="text-nowrap">หมวดหมู่สินค้า</th>
-											<th  class="text-nowrap">สถานะ</th>
-											<th  class="text-nowrap">Created_At</th>
-                                            <th  class="text-nowrap">Updated_At</th>
-											<th  class="text-nowrap" style="width: 10%">จัดการ</th>
+											<th>รูปภาพหมวดหมู่สินค้า</th>
+											<th>หมวดหมู่สินค้า</th>
+											<th>สถานะ</th>
+											<th style="width: 10%">จัดการ</th>
 										</tr>
 									</thead>
 
@@ -181,8 +179,6 @@
 											echo '<td >  <img class="img-upload-preview " width="50" height="50" src="../uploads/'. $row["image"] . '" alt="preview" style="object-fit: cover;"></td> ';
 											echo '<td>' . $row["name"] . '</td>';
 											echo '<td>' . $row["status"] . '</td>';
-											echo '<td>' . $row["created_at"] . '</td>';
-											echo '<td>' . $row["updated_at"] . '</td>';
 											echo '<td>
 												<div class="form-button-action">
 													<a href="edit-category.php?id='. $row["id"] .'" data-toggle="tooltip"  title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">

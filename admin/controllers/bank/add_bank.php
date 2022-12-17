@@ -1,7 +1,11 @@
 
 
 <?php
-$name= $_POST['name'];
+$bank_code= $_POST['bank_code'];
+$bank_name= $_POST['bank_name'];
+$bank_account= $_POST['bank_account'];
+$bank_account_name= $_POST['bank_account_name'];
+
 // $img= $_POST['img'];
 
 
@@ -12,7 +16,7 @@ if(!empty($_POST['status'])) {
  }
 
 
-if (!$name) {
+if (!$bank_code) {
 
     echo '
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
@@ -22,18 +26,18 @@ if (!$name) {
     setTimeout(function() {
      swal({
          title: "เกิดข้อผิดพลาด",
-          text: "ชื่อประเภทสินค้า",
+          text: "ชื่อบัญชีธนาคาร",
          type: "warning"
      }, function() {
-         window.location = "../../pages/category.php"; //หน้าที่ต้องการให้กระโดดไป
+         window.location = "../../pages/bank.php"; //หน้าที่ต้องการให้กระโดดไป
      });
         }, 1000);
     </script>';
 }else {
 
 
-if($_FILES['image']['error'] == 0){
-  $filename = $_FILES['image']['name'];
+if($_FILES['bank_logo']['error'] == 0){
+  $filename = $_FILES['bank_logo']['name'];
 
 $destination = '../../uploads/' . $filename;
 // echo $destination;
@@ -41,8 +45,8 @@ $destination = '../../uploads/' . $filename;
 $extension = pathinfo($filename, PATHINFO_EXTENSION);
 
 // the physical file on a temporary uploads directory on the server
-$file = $_FILES['image']['tmp_name'];
-$size = $_FILES['image']['size'];
+$file = $_FILES['bank_logo']['tmp_name'];
+$size = $_FILES['bank_logo']['size'];
 $allowd_file_ext = array("jpg", "jpeg", "png");
 
     if (!in_array($extension, $allowd_file_ext)) {
@@ -57,11 +61,11 @@ $allowd_file_ext = array("jpg", "jpeg", "png");
             text: "You file extension must be .zip, .pdf or .docx 22",
             type: "warning"
         }, function() {
-            window.location = "../../pages/category.php"; //หน้าที่ต้องการให้กระโดดไป
+            window.location = "../../pages/bank.php"; //หน้าที่ต้องการให้กระโดดไป
         });
             }, 1000);
         </script>';
-    } elseif ($_FILES['image']['size'] > 1000000) { // file shouldn't be larger than 1Megabyte
+    } elseif ($_FILES['bank_logo']['size'] > 1000000) { // file shouldn't be larger than 1Megabyte
         // echo "File too large!";
         echo '
         <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
@@ -74,7 +78,7 @@ $allowd_file_ext = array("jpg", "jpeg", "png");
             text: "File too large!",
             type: "warning"
         }, function() {
-            window.location = "../../pages/category.php"; //หน้าที่ต้องการให้กระโดดไป
+            window.location = "../../pages/bank.php"; //หน้าที่ต้องการให้กระโดดไป
         });
             }, 1000);
         </script>';
@@ -92,9 +96,11 @@ include("../../../config/connectdb.php");
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">';
         if (move_uploaded_file($file, $destination)) {
 
-            $stmt = $conn->prepare("SELECT id FROM tbl_categories WHERE name = :name");
+
+            $stmt = $conn->prepare("SELECT id FROM tbl_banks WHERE bank_code = :bank_code");
             //$stmt->bindParam(':username', $username , PDO::PARAM_STR);
-            $stmt->execute(array(':name' => $name));
+            $stmt->execute(array(':bank_code' => $bank_code));
+       
 
             if ($stmt->rowCount() > 0) {
                 echo '<script>
@@ -104,16 +110,19 @@ include("../../../config/connectdb.php");
                             text: "กรุณากรอกใหม่อีกครั้ง",
                             type: "warning"
                         }, function() {
-                            window.location = "../../pages/category.php"; //หน้าที่ต้องการให้กระโดดไป
+                            window.location = "../../pages/bank.php"; //หน้าที่ต้องการให้กระโดดไป
                         });
                       }, 1000);
                 </script>';
             } else { //ถ้า username ไม่ซ้ำ เก็บข้อมูลลงตาราง
                 //sql insert
-                $stmt = $conn->prepare("INSERT INTO tbl_categories (name, image, status)
-                VALUES (:name, :image, :status)");
-                $stmt->bindParam(':name', $name, PDO::PARAM_STR);
-                $stmt->bindParam(':image', $filename, PDO::PARAM_STR);
+                $stmt = $conn->prepare("INSERT INTO tbl_banks (bank_code, bank_logo,bank_name,bank_account,bank_account_name ,status)
+              VALUES (:bank_code, :bank_logo,:bank_name,:bank_account,:bank_account_name, :status)");
+                $stmt->bindParam(':bank_code', $bank_code, PDO::PARAM_STR);
+                $stmt->bindParam(':bank_logo', $filename, PDO::PARAM_STR);
+                $stmt->bindParam(':bank_name', $bank_name, PDO::PARAM_STR);
+                $stmt->bindParam(':bank_account', $bank_account, PDO::PARAM_STR);
+                $stmt->bindParam(':bank_account_name', $bank_account_name, PDO::PARAM_STR);
                 $stmt->bindParam(':status', $status, PDO::PARAM_STR);
                
                 $result = $stmt->execute();
@@ -121,11 +130,11 @@ include("../../../config/connectdb.php");
                     echo '<script>
                        setTimeout(function() {
                         swal({
-                            title: "เพิ่มประเภทสินค้าสำเร็จ",
-                            text: "กรุณารอระบบ show Category",
+                            title: "เพิ่มบัญชีธนาคารสำเร็จ",
+                            text: "กรุณารอระบบ show bank",
                             type: "success"
                         }, function() {
-                            window.location = "../../pages/category.php"; //หน้าที่ต้องการให้กระโดดไป
+                            window.location = "../../pages/bank.php"; //หน้าที่ต้องการให้กระโดดไป
                         });
                       }, 1000);
                   </script>';
@@ -136,7 +145,7 @@ include("../../../config/connectdb.php");
                             title: "เกิดข้อผิดพลาด",
                             type: "error"
                         }, function() {
-                            window.location = "../../pages/category.php"; //หน้าที่ต้องการให้กระโดดไป
+                            window.location = "../../pages/bank.php"; //หน้าที่ต้องการให้กระโดดไป
                         });
                       }, 1000);
                   </script>';
@@ -159,7 +168,7 @@ include("../../../config/connectdb.php");
           text: "กรอกข้อมูล ไม่ถูกต้อง ลองใหม่อีกครั้ง",
          type: "warning"
      }, function() {
-         window.location = "../../pages/category.php"; //หน้าที่ต้องการให้กระโดดไป
+         window.location = "../../pages/bank.php"; //หน้าที่ต้องการให้กระโดดไป
      });
         }, 1000);
     </script>';

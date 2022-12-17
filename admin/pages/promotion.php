@@ -87,11 +87,14 @@
 								<table id="add-row" class="display table table-striped table-hover">
 									<thead>
 										<tr>
-											<th>ลำดับ</th>
-											<th>โปรโมชั่น</th>
+											<th  class="text-nowrap">ลำดับ</th>
+											<th  class="text-nowrap">รูปโปรโมชั่นสินค้า</th>
+											<th  class="text-nowrap">โปรโมชั่น</th>
 											
-											<th>สถานะ</th>
-											<th style="width: 10%">จัดการ</th>
+											<th  class="text-nowrap">สถานะ</th>
+											<th  class="text-nowrap">Created_At</th>
+                                            <th  class="text-nowrap">Updated_At</th>
+											<th  class="text-nowrap" style="width: 10%">จัดการ</th>
 										</tr>
 									</thead>
 
@@ -104,9 +107,11 @@
 									while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
 										echo '<tr>';
 										echo '<td>' . $row["id"] . '</td>';
-										
+										echo '<td><img class="img-upload-preview " width="50" height="50" src="../uploads/'. $row["image"] . '" alt="preview" style="object-fit: cover;"></td>';
 										echo '<td>' . $row["name"] . '</td>';
 										echo '<td>' . $row["status"] . '</td>';
+										echo '<td>' . $row["created_at"] . '</td>';
+										echo '<td>' . $row["updated_at"] . '</td>';
 										echo '<td>
 												<div class="form-button-action">
 													<a href="edit-promotion.php?id='. $row["id"] .'" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">

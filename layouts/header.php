@@ -247,10 +247,15 @@ background: linear-gradient(90deg, rgba(241,155,255,1) 0%, rgba(126,104,231,1) 3
         </div>
     </div>
 
+    
 
     <nav class="navbar navbar-expand-lg bg-white p-2 sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="#">LOGO</a>
+           
+            <a class="navbar-brand" href="#">
+           <img src="./assets/images/logo.png" alt="Logo" width="60" height="24" class="d-inline-block align-text-top">
+            อาหารแมว
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

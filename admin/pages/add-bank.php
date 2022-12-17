@@ -75,13 +75,13 @@
 						<i class="flaticon-right-arrow"></i>
 					</li>
 					<li class="nav-item">
-						<a href="#">รายการโปรโมชั่นสินค้า</a>
+						<a href="#">รายการบัญชีธนาคาร</a>
 					</li>
 					<li class="separator">
 						<i class="flaticon-right-arrow"></i>
 					</li>
 					<li class="nav-item">
-						<a href="#">เพิ่มโปรโมชั่นสินค้า</a>
+						<a href="#">เพิ่มบัญชีธนาคาร</a>
 					</li>
 
 				</ul>
@@ -93,42 +93,59 @@
 					<div class="card">
 						<div class="card-header">
 							<div class="d-flex align-items-center">
-								<h4 class="card-title"> เพิ่มโปรโมชั่นสินค้า</h4>
+								<h4 class="card-title"> เพิ่มบัญชีธนาคาร</h4>
 
 								<!-- <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
 									<i class="fa fa-plus"></i>
-									เพิ่มโปรโมชั่นสินค้า
+									เพิ่มบัญชีธนาคาร
 								</button> -->
 							</div>
 						</div>
 						<div class="card-body">
 
 
-							<form action="../controllers/promotion/add_promotion.php" method="post" enctype="multipart/form-data">
+							<form action="../controllers/bank/add_bank.php" method="post" enctype="multipart/form-data">
 								<div class="row">
-							
-
-									<div class="col-sm-12">
+									<div class="col-sm-6">
 										<div class="form-group ">
-											<label>ชื่อโปรโมชั่นสินค้า</label>
-											<input id="addName" type="text" name="name" class="form-control" placeholder="name" required>
+											<label>ชื่อธนาคาร</label>
+											<input id="addName" type="text" name="bank_name" class="form-control" placeholder="ชื่อธนาคาร" required>
 										</div>
 									</div>
-							
+                                    <div class="col-sm-6">
+										<div class="form-group ">
+											<label>ชื่อย่อธนาคาร</label>
+											<input id="addName" type="text" name="bank_code" class="form-control" placeholder="ชื่อย่อธนาคาร" required>
+										</div>
+									</div>
+                                    <div class="col-sm-6">
+										<div class="form-group ">
+											<label>เลขบัญชี</label>
+											<input id="addName" type="text" name="bank_account" class="form-control" placeholder="เลขบัญชี" required>
+										</div>
+									</div>
+                                    <div class="col-sm-6">
+										<div class="form-group ">
+											<label>ชื่อบัญชีธนาคาร</label>
+											<input id="addName" type="text" name="bank_account_name" class="form-control" placeholder="ชื่อบัญชีธนาคาร" required>
+										</div>
+									</div>
+                        
 									<div class="col-md-6 pr-0">
 										<div class="form-group ">
-											<label>รูปโปรโมชั่นสินค้า</label>
+											<label>รูปบัญชีธนาคาร</label>
 
 
 											<div class="input-file input-file-image text-center">
 												<img class="img-upload-preview w-100" height="300" src="http://placehold.it/100x100" alt="preview" style="object-fit: cover;">
-												<input type="file" class="form-control form-control-file" id="uploadImg" name="image" accept="image/*" required>
+												<input type="file" class="form-control form-control-file" id="uploadImg" name="bank_logo" accept="image/*" required>
 												<label for="uploadImg" class="btn btn-primary btn-round btn-lg"><i class="fa fa-file-image"></i> Upload a Image</label>
 											</div>
 
 										</div>
 									</div>
-									<div class="col-md-12">
+
+									<div class="col-md-6">
 										<div class="form-group ">
 											<label>สถานะ</label>
 											<br>
@@ -144,7 +161,6 @@
 									<a href="category.php" class="btn btn-danger" data-dismiss="modal">ยกเลิก</a>
 								</div>
 							</form>
-
 						</div>
 					</div>
 				</div>

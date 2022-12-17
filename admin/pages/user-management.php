@@ -18,7 +18,7 @@
 						<i class="flaticon-right-arrow"></i>
 					</li>
 					<li class="nav-item">
-						<a href="#">รายการประเภทสินค้า</a>
+						<a href="#">รายการผู้ใช้</a>
 					</li>
 
 				</ul>
@@ -30,10 +30,10 @@
 					<div class="card">
 						<div class="card-header">
 							<div class="d-flex align-items-center">
-								<h4 class="card-title">รายการประเภทสินค้า</h4>
-								<a href="add-category.php" class="btn btn-primary btn-round ml-auto" >
+								<h4 class="card-title">รายการผู้ใช้</h4>
+								<a href="add-user.php" class="btn btn-primary btn-round ml-auto" >
 									<i class="fa fa-plus"></i>
-									เพิ่มประเภทสินค้า
+									เพิ่มผู้ใช้
 								</a>
 							</div>
 						</div>
@@ -56,7 +56,7 @@
 										</div>
 										<div class="modal-body">
 
-											<form action="../controllers/category/add_category.php" method="post" enctype="multipart/form-data">
+											<form action="../controllers/user/add_user.php" method="post" enctype="multipart/form-data">
 												<div class="row">
 													<div class="col-sm-12">
 														<div class="form-group form-group-default">
@@ -66,7 +66,7 @@
 													</div>
 													<div class="col-md-6 pr-0">
 														<div class="form-group form-group-default">
-															<label>รูปประเภทสินค้า</label>
+															<label>รูปผู้ใช้</label>
 
 
 															<div class="input-file input-file-image text-center">
@@ -113,7 +113,7 @@
 										</div>
 										<div class="modal-body">
 
-											<form action="../controllers/category/add_category.php" method="post" enctype="multipart/form-data">
+											<form action="../controllers/user/add_user.php" method="post" enctype="multipart/form-data">
 												<div class="row">
 													<div class="col-sm-12">
 														<div class="form-group form-group-default">
@@ -123,7 +123,7 @@
 													</div>
 													<div class="col-md-6 pr-0">
 														<div class="form-group form-group-default">
-															<label>รูปประเภทสินค้า</label>
+															<label>รูปผู้ใช้</label>
 
 
 															<div class="input-file input-file-image text-center">
@@ -159,11 +159,15 @@
 									<thead>
 										<tr>
 											<th  class="text-nowrap">ลำดับ</th>
-											
-											<th  class="text-nowrap">รูปภาพหมวดหมู่สินค้า</th>
-											<th  class="text-nowrap">หมวดหมู่สินค้า</th>
+											<th  class="text-nowrap">รูปภาพ</th>
+                                            <th  class="text-nowrap">username</th>
+                                            <th  class="text-nowrap">ชื่อ</th>
+                                            <th  class="text-nowrap">สกุล</th>
+                                            <th  class="text-nowrap">เบอร์โทร</th>
+                                            <th  class="text-nowrap">อีเมล</th>
+                                            <th  class="text-nowrap">ที่อยู่</th>
 											<th  class="text-nowrap">สถานะ</th>
-											<th  class="text-nowrap">Created_At</th>
+                                            <th  class="text-nowrap">Created_At</th>
                                             <th  class="text-nowrap">Updated_At</th>
 											<th  class="text-nowrap" style="width: 10%">จัดการ</th>
 										</tr>
@@ -173,22 +177,28 @@
 
 										<?php
 										include("../../config/connectdb.php");
-										$select = $conn->prepare("SELECT * FROM `tbl_categories` ORDER BY `id`;"); //Query
+										$select = $conn->prepare("SELECT * FROM `tbl_member` ORDER BY `id`;"); //Query
 										$select->execute();
 										while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
 											echo '<tr>';
 											echo '<td>' . $row["id"] . '</td>';
 											echo '<td >  <img class="img-upload-preview " width="50" height="50" src="../uploads/'. $row["image"] . '" alt="preview" style="object-fit: cover;"></td> ';
-											echo '<td>' . $row["name"] . '</td>';
+											echo '<td>' . $row["username"] . '</td>';
+                                            echo '<td>' . $row["fname"] . '</td>';
+                                            echo '<td>' . $row["lname"] . '</td>';
+                                            echo '<td>' . $row["phone"] . '</td>';
+                                            echo '<td>' . $row["email"] . '</td>';
+                                            echo '<td>' . $row["address"] . '</td>';
+                                
 											echo '<td>' . $row["status"] . '</td>';
-											echo '<td>' . $row["created_at"] . '</td>';
-											echo '<td>' . $row["updated_at"] . '</td>';
+                                            echo '<td>' . $row["created_at"] . '</td>';
+                                            echo '<td>' . $row["updated_at"] . '</td>';
 											echo '<td>
 												<div class="form-button-action">
-													<a href="edit-category.php?id='. $row["id"] .'" data-toggle="tooltip"  title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
+													<a href="edit-user.php?id='. $row["id"] .'" data-toggle="tooltip"  title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
 														<i class="fa fa-edit"></i>
 													</a>
-													<a href="../controllers/category/delete_category.php?id='. $row["id"] .'" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+													<a href="../controllers/user/delete_user.php?id='. $row["id"] .'" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
 														<i class="fa fa-times"></i>
 													</a>
 												</div>

@@ -13,10 +13,10 @@ include("../../config/connectdb.php");
 $id = $_GET['id'];
 
 if ($id) {
-    $stmt = $conn->prepare("SELECT * FROM tbl_promotions WHERE id = :id");
+    $stmt = $conn->prepare("SELECT * FROM tbl_banks WHERE id = :id");
     $stmt->execute(array(':id' => $id));
 
-    $promotion = $stmt->fetch();
+    $bank = $stmt->fetch();
 
 }
 
@@ -95,13 +95,13 @@ if ($id) {
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="#">รายการโปรโมชั่นสินค้า</a>
+                        <a href="#">รายการประเภทสินค้า</a>
                     </li>
                     <li class="separator">
                         <i class="flaticon-right-arrow"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="#">แก้ไขโปรโมชั่นสินค้า</a>
+                        <a href="#">แก้ไขประเภทสินค้า</a>
                     </li>
 
                 </ul>
@@ -113,45 +113,66 @@ if ($id) {
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex align-items-center">
-                                <h4 class="card-title"> แก้ไขโปรโมชั่นสินค้า</h4>
+                                <h4 class="card-title"> แก้ไขประเภทสินค้า</h4>
 
                                 <!-- <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
 									<i class="fa fa-plus"></i>
-									แก้ไขโปรโมชั่นสินค้า
+									แก้ไขประเภทสินค้า
 								</button> -->
                             </div>
                         </div>
                         <div class="card-body">
 
 
-                            <form action="../controllers/promotion/edit_promotion.php" method="post"  enctype="multipart/form-data">
+                            <form action="../controllers/bank/edit_bank.php" method="post" enctype="multipart/form-data">
                                 <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="form-group ">
-                                            <label>ชื่อโปรโมชั่นสินค้า</label>
-                                            <input id="addName" type="text" name="name" value="<?= $promotion['name']; ?>" class="form-control" placeholder="name" required>
-                                        </div>
-                                    </div>
+                                <div class="col-sm-6">
+										<div class="form-group ">
+											<label>ชื่อธนาคาร</label>
+											<input id="addName" type="text" name="bank_name" value="<?= $bank['bank_name']; ?>" class="form-control" placeholder="ชื่อธนาคาร" required>
+										</div>
+									</div>
+                                    <div class="col-sm-6">
+										<div class="form-group ">
+											<label>ชื่อย่อธนาคาร</label>
+											<input id="addName" type="text" name="bank_code"  value="<?= $bank['bank_code']; ?>" class="form-control" placeholder="ชื่อย่อธนาคาร" required>
+										</div>
+									</div>
+                                    <div class="col-sm-6">
+										<div class="form-group ">
+											<label>เลขบัญชี</label>
+											<input id="addName" type="text" name="bank_account"  value="<?= $bank['bank_account']; ?>" class="form-control" placeholder="เลขบัญชี" required>
+										</div>
+									</div>
+                                    <div class="col-sm-6">
+										<div class="form-group ">
+											<label>ชื่อบัญชีธนาคาร</label>
+											<input id="addName" type="text" name="bank_account_name"  value="<?= $bank['bank_account_name']; ?>" class="form-control" placeholder="ชื่อบัญชีธนาคาร" required>
+										</div>
+									</div>
+
                                     <div class="col-md-6 pr-0">
-                                        <div class="form-group ">
-                                            <label>รูปประเภทสินค้า</label>
+										<div class="form-group ">
+											<label>รูปบัญชีธนาคาร</label>
 
 
-                                            <div class="input-file input-file-image text-center">
-                                                <img class="img-upload-preview w-100" height="300" src="../uploads/<?= $promotion['image']; ?>" alt="preview" style="object-fit: cover;">
-                                                <input type="file" class="form-control form-control-file" id="uploadImg" name="image" value="<?= $promotion['image']; ?>" accept="image/*">
-                                                <label for="uploadImg" class="btn btn-primary btn-round btn-lg"><i class="fa fa-file-image"></i> Upload a Image</label>
-                                            </div>
+											<div class="input-file input-file-image text-center">
+												<img class="img-upload-preview w-100" height="300" src="../uploads/<?= $bank['bank_logo']; ?>" alt="preview" style="object-fit: cover;">
+												<input type="file" class="form-control form-control-file" id="uploadImg" name="bank_logo" value="<?= $bank['bank_logo']; ?>" accept="image/*" >
+												<label for="uploadImg" class="btn btn-primary btn-round btn-lg"><i class="fa fa-file-image"></i> Upload a Image</label>
+											</div>
 
-                                        </div>
-                                    </div>
+										</div>
+									</div>
 
-                                    <div class="col-md-12">
+            
+
+                                    <div class="col-md-6">
                                         <div class=" ">
                                             <label>สถานะ</label>
                                             <br>
                                             <label class="switch">
-                                                <input id="status" type="checkbox" <?= $promotion['status'] == 'on' ? 'checked' : ''; ?> name="status" >
+                                                <input id="status" type="checkbox" <?= $bank['status'] == 'on' ? 'checked' : ''; ?> name="status" >
                                                 <div class="slider"></div>
                                             </label>
                                           
@@ -159,8 +180,8 @@ if ($id) {
                                     </div>
                                 </div>
                                 <div class="modal-footer border-0">
-                                    <button type="submit" name="id" value="<?= $promotion['id'] ; ?>" class="btn btn-primary">ยินยัน</button>
-                                    <a href="promotion.php" class="btn btn-danger" data-dismiss="modal">ยกเลิก</a>
+                                    <button type="submit" name="id" value="<?= $bank['id'] ; ?>" class="btn btn-primary">ยินยัน</button>
+                                    <a href="bank.php" class="btn btn-danger" data-dismiss="modal">ยกเลิก</a>
                                 </div>
                             </form>
                         </div>

@@ -75,13 +75,13 @@
 						<i class="flaticon-right-arrow"></i>
 					</li>
 					<li class="nav-item">
-						<a href="#">รายการโปรโมชั่นสินค้า</a>
+						<a href="#">รายการประเภทสินค้า</a>
 					</li>
 					<li class="separator">
 						<i class="flaticon-right-arrow"></i>
 					</li>
 					<li class="nav-item">
-						<a href="#">เพิ่มโปรโมชั่นสินค้า</a>
+						<a href="#">เพิ่มประเภทสินค้า</a>
 					</li>
 
 				</ul>
@@ -93,31 +93,28 @@
 					<div class="card">
 						<div class="card-header">
 							<div class="d-flex align-items-center">
-								<h4 class="card-title"> เพิ่มโปรโมชั่นสินค้า</h4>
+								<h4 class="card-title"> เพิ่มประเภทสินค้า</h4>
 
 								<!-- <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
 									<i class="fa fa-plus"></i>
-									เพิ่มโปรโมชั่นสินค้า
+									เพิ่มประเภทสินค้า
 								</button> -->
 							</div>
 						</div>
 						<div class="card-body">
 
 
-							<form action="../controllers/promotion/add_promotion.php" method="post" enctype="multipart/form-data">
+							<form action="../controllers/category/add_category.php" method="post" enctype="multipart/form-data">
 								<div class="row">
-							
-
 									<div class="col-sm-12">
 										<div class="form-group ">
-											<label>ชื่อโปรโมชั่นสินค้า</label>
+											<label>ชื่อหมวดหมู่สินค้า</label>
 											<input id="addName" type="text" name="name" class="form-control" placeholder="name" required>
 										</div>
 									</div>
-							
 									<div class="col-md-6 pr-0">
 										<div class="form-group ">
-											<label>รูปโปรโมชั่นสินค้า</label>
+											<label>รูปประเภทสินค้า</label>
 
 
 											<div class="input-file input-file-image text-center">
@@ -128,7 +125,8 @@
 
 										</div>
 									</div>
-									<div class="col-md-12">
+
+									<div class="col-md-6">
 										<div class="form-group ">
 											<label>สถานะ</label>
 											<br>
@@ -144,7 +142,6 @@
 									<a href="category.php" class="btn btn-danger" data-dismiss="modal">ยกเลิก</a>
 								</div>
 							</form>
-
 						</div>
 					</div>
 				</div>

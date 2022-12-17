@@ -71,18 +71,19 @@ function Categoryfk($dt,$rowp) {
 								<table id="add-row" class="display table table-striped table-hover">
 									<thead>
 										<tr>
-											<th>ลำดับ</th>
-											<th>รูปภาพสินค้า</th>
-											<th>ชื่อสินค้า</th>
-											<th>รหัสสินค้า</th>
-											<th>หมวดหมู่สินค้า</th>
-											<th>โปรโมชั่นสินค้า</th>
-											<th>รายละเอียดสินค้า</th>
-											<th>ราคา</th>
-											<th>จำนวน</th>
-											<th>สถานะ</th>
-
-											<th style="width: 10%">จัดการ</th>
+											<th  class="text-nowrap">ลำดับ</th>
+											<th  class="text-nowrap">รูปภาพสินค้า</th>
+											<th  class="text-nowrap">ชื่อสินค้า</th>
+											<th  class="text-nowrap">รหัสสินค้า</th>
+											<th  class="text-nowrap">หมวดหมู่สินค้า</th>
+											<th  class="text-nowrap">โปรโมชั่นสินค้า</th>
+											<th  class="text-nowrap">รายละเอียดสินค้า</th>
+											<th  class="text-nowrap">ราคา</th>
+											<th  class="text-nowrap">จำนวน</th>
+											<th  class="text-nowrap">สถานะ</th>
+											<th  class="text-nowrap">Created_At</th>
+                                            <th  class="text-nowrap">Updated_At</th>
+											<th  class="text-nowrap" style="width: 10%">จัดการ</th>
 										</tr>
 									</thead>
 
@@ -112,6 +113,8 @@ function Categoryfk($dt,$rowp) {
 											echo '<td>' . $row["price"] . '</td>';
 											echo '<td>' . $row["qty"] . '</td>';
 											echo '<td>' . $row["status"] . '</td>';
+											echo '<td>' . $row["created_at"] . '</td>';
+											echo '<td>' . $row["updated_at"] . '</td>';
 											echo '<td>
 												<div class="form-button-action">
 													<a href="edit-product.php?id='. $row["product_id"] .'" data-toggle="tooltip"  title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">

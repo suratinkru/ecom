@@ -11,30 +11,12 @@
 								<span>
 									Suratin
 									<span class="user-level">Administrator</span>
-									<span class="caret"></span>
+									<!-- <span class="caret"></span> -->
 								</span>
 							</a>
 							<div class="clearfix"></div>
 
-							<div class="collapse in" id="collapseExample">
-								<ul class="nav">
-									<li>
-										<a href="#profile">
-											<span class="link-collapse">My Profile</span>
-										</a>
-									</li>
-									<li>
-										<a href="#edit">
-											<span class="link-collapse">Edit Profile</span>
-										</a>
-									</li>
-									<li>
-										<a href="#settings">
-											<span class="link-collapse">Settings</span>
-										</a>
-									</li>
-								</ul>
-							</div>
+						
 						</div>
 					</div>
 					<ul class="nav nav-primary">
@@ -76,40 +58,40 @@
 							</a>
 							
 						</li>
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#forms">
+						<li class="nav-item <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/admin/pages/user-management.php' ? 'active' : ''  ?> ">
+							<a href="user-management.php">
 							<i class="fas fa-users-cog"></i>
 								<p>จัดการผู้ใช้งาน</p>
 								
 							</a>
 						
 						</li>
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#tables">
-							<i class="fas fa-user-circle ml-1"></i>
-								<p>ตั้งค่าธนาคารโอนชำระเงิน</p>
+						<li class="nav-item <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/admin/pages/bank.php' || $_SERVER['REQUEST_URI'] === '/ecommerce/admin/pages/add-bank.php'? 'active' : ''  ?>">
+							<a href="bank.php">
+							<i class="fas fa-user-circle "></i>
+								<p>ธนาคารโอนชำระเงิน</p>
 								
 							</a>
 							
 						</li>
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#maps">
+						<li class="nav-item <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/admin/pages/order.php' ? 'active' : ''  ?>">
+							<a href="order.php">
 							<i class="fab fa-jedi-order"></i>
 								<p>ข้อมูลการสั่งซื้อสินค้า</p>
 								
 							</a>
 							
 						</li>
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#charts">
+						<li class="nav-item <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/admin/pages/shipping-information.php'  ? 'active' : ''  ?>">
+							<a  href="shipping-information.php">
 							<i class="far fa-calendar-alt"></i>
 								<p>ข้อมูลการจัดส่งสินค้า</p>
 								
 							</a>
 							
 						</li>
-						<li class="nav-item">
-							<a href="calendar.html">
+						<li class="nav-item <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/admin/pages/report.php' ? 'active' : ''  ?>">
+							<a href="report.php">
 								
 								<i class="far fa-chart-bar"></i>
 								<p>สรุปรายงานการขาย</p>
