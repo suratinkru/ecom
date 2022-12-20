@@ -40,15 +40,16 @@ foreach($_SESSION['cart'] as $p_id=>$qty)
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">';
 
 
-    $stmt2 = $conn->prepare("INSERT INTO tbl_order (o_name,o_address, o_email, o_phone,o_qty,o_total)
-    VALUES (:o_name, :o_address, :o_email, :o_phone, :o_qty, :o_total)");
+    $stmt2 = $conn->prepare("INSERT INTO tbl_order (o_name,o_address, o_email, o_phone,o_qty,o_total,user_id)
+    VALUES (:o_name, :o_address, :o_email, :o_phone, :o_qty, :o_total,:user_id)");
       $stmt2->bindParam(':o_name', $name, PDO::PARAM_STR);
       $stmt2->bindParam(':o_address', $address, PDO::PARAM_STR);
       $stmt2->bindParam(':o_email', $email, PDO::PARAM_STR);
       $stmt2->bindParam(':o_phone', $phone, PDO::PARAM_STR);
       $stmt2->bindParam(':o_qty', $total_qty, PDO::PARAM_STR);
       $stmt2->bindParam(':o_total', $total, PDO::PARAM_STR);
- 
+      $stmt2->bindParam(':user_id', $_SESSION['id'], PDO::PARAM_INT);
+     
       $result = $stmt2->execute();
 
       if ($result) {
