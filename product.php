@@ -91,6 +91,29 @@ include("./config/connectdb.php");
 
 
 <div class="container text-center main">
+    <div class="row">
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://pawrentspet.com/upload-img/PawrentsSite/pawrents_catfood_banner_slide02.jpg" class="d-block w-100 "  style="height: 300px; object-fit: cover;" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://cf.shopee.co.th/file/2931c4848cd1bbe40de2ed9243a03713" class="d-block w-100 "  style="height: 300px; object-fit: cover;" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://static.wixstatic.com/media/fdde5d_f01d15a1c19141f88fcde9490d1b46fa~mv2.jpg/v1/fill/w_560,h_420,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/Slide76_JPG.jpg" class="d-block w-100 " style="height: 300px; object-fit: cover;" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+    </div>
 
     <div class="row">
 

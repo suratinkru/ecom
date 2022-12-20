@@ -318,10 +318,10 @@ include_once "./controllers/index.php";
 </div>
 
 
-<div class="container-fulid mt-4 " style="background-color: #ec99fe;">
+<div class="container-fulid mt-4 " style="background-color: #141619fa;">
 <div class="container p-2">
     <div class="row mt-5">
-        <h2 class="text-center" style="    background-color: violet;">ทำไมอาหารสัตว์เลี้ยงจากโปรตีนแมลงของโยราถึงดีกว่า?</h2>
+        <h2 class="text-center" style="   color: #dabfda;">ทำไมอาหารสัตว์เลี้ยงจากโปรตีนแมลงของโยราถึงดีกว่า?</h2>
     </div>
   <div class="row">
     <div class="col">
