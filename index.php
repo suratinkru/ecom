@@ -233,8 +233,11 @@ include_once "./controllers/index.php";
                         if (!empty($ct)) {
 
                             foreach ($ct as $row => $item) { ?>
-                                <div class="p-2 text-center "><img src="./admin/uploads/<?php echo $item['image']  ?>" class="rounded-circle" alt="..." width="100" height="100">
+                                <div class="p-2 text-center ">
+                                <a href="product_type.php?id=<?php echo $item['id']  ?>&name=<?php echo $item['name']  ?>">
+                                    <img src="./admin/uploads/<?php echo $item['image']  ?>" class="rounded-circle" alt="..." width="100" height="100">
                                     <p class="ctname"><?php echo $item['name']  ?></p>
+                                </a>
                                 </div>
 
                         <?php }

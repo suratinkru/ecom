@@ -92,6 +92,15 @@ if(!empty($_GET['id'])) {
     .cart i {
         margin-right: 10px
     }
+
+    a {
+    color: #000;
+    text-decoration: none;
+    }
+
+    .rating-color {
+        color: #fbc634 !important;
+    }
 </style>
 
 <div class="container">
@@ -140,6 +149,80 @@ if(!empty($_GET['id'])) {
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+        <?php
+
+
+$sell = 10;
+$selectbest = $conn->prepare("SELECT * ,pro.id as product_id, pro.name as product_name,pro.image as product_image, cate.name as category_name,promo.name as promoton_name FROM tbl_products as pro ,tbl_categories as cate ,tbl_promotions as promo where pro.sell_number >= :sell and pro.category_id =cate.id and pro.promotion_id = promo.id");
+$selectbest->execute(array(':sell' =>  $sell ));
+
+// $selectbest = $conn->prepare("SELECT *  FROM tbl_products where sell_number >= 10 ORDER BY `id`;"); //Query
+// $selectbest->execute();
+$probest = $selectbest->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+if (!empty($probest)) {
+
+
+?>
+    <!-- สินค้าขายดี -->
+    <div class="row ">
+        <!-- <h4 class="text-start">โปรโมชั่น</h4> -->
+        <div class="d-flex ">
+            <div class="p-2">สินค้าค้าแนะนำ</div>
+
+            <a href="best-seller.php" class="ms-auto p-2">ทั้งหมด</a>
+        </div>
+    </div>
+    <div class="row mb-5 row-cols-1 row-cols-md-6 g-1">
+        <?php
+        $ib = 0;
+        foreach ($probest as $row => $link) {
+            if ($ib < 16) {
+                $ib += 1;
+        ?>
+                <div class="col-12 " >
+                    <a href="product_detail.php?id=<?php echo $link['product_id'] ?>" >
+                        <div class="card h-100">
+                            <img src="./admin/uploads/<?php echo $link['product_image'] ; ?>" class="card-img-top" alt="..." style="height: 100px; object-fit: cover;">
+                            <div class="card-body">
+                                <h6 class="card-title text-start"><?php echo $link['product_name']; ?></h5>
+                                <div class="price d-flex flex-row align-items-center"> <span class="act-price">฿ <?php echo $link["price"] - $link["discount"] ;?> </span>
+                                <div class="ml-2"> <small class="dis-price"> <?php echo $link["price"];?> </small> <span>- <?php echo $link["discount"] * 100 / $link["price"];?>% </span> </div>
+                                </div>
+                                    <div class=" d-flex justify-content-between align-items-center">
+                                        <!-- <h5 class="review-stat">Cleanliness</h5> -->
+                                        <div class="small-ratings">
+                                            <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
+                                            <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
+                                            <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
+                                            <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
+                                            <i class="fa fa-star rating-color" style="font-size: 10px;"></i>
+                                            <span style="font-size: 10px;">(<?php echo $link['sell_number']; ?>)</span>
+                                        </div>
+
+                                    </div>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+
+
+        <?php }
+        } ?>
+
+    </div>
+
+<?php } ?>
+<!-- end สินค้าขายดี -->
         </div>
     </div>
 </div>

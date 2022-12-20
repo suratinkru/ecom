@@ -27,22 +27,23 @@ if(empty($_SESSION['id']) && empty($_SESSION['name']) && empty($_SESSION['userna
 
 ?>
 
-<div class="container">
+<div class="container ">
 <div class="row mt-3">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mt-3">
-                <li class="breadcrumb-item"><a href="product.php">สินค้า</a></li>
+                <li class="breadcrumb-item"><a href="cart.php">ตะกร้าสินค้า</a></li>
                 <li class="breadcrumb-item active" aria-current="page">ยืนยันการสั่งซื้อ</li>
             </ol>
         </nav>
     </div>
 </div>
-<div class="container bg-white rounded">
 
-<div class="row mt-2">
+<div class="container bg-white mb-5 rounded">
+
+<div class="row ">
 
 
-<form id="frmcart" name="frmcart" method="post" action="./controllers/cart.php?act=update">
+<form id="frmcart" name="frmcart" method="post" action="./controllers/confirm.php">
 
 <div class="table-responsive">
 <div class="d-flex justify-content-center mb-3 mt-3"><b>ยืนยันการสั่งซื้อ</b></div>
@@ -112,7 +113,7 @@ if(!empty($_SESSION['cart']))
     <td width="22%" bgcolor="#EEEEEE">ที่อยู่</td>
     <td width="78%">
     <!-- <textarea name="address" cols="35" rows="5" id="address" required></textarea> -->
-    <textarea class="form-control" id="exampleFormControlTextarea1"  rows="5" id="address" required></textarea>
+    <textarea class="form-control" id="exampleFormControlTextarea1"  rows="5" id="address" name="address" required></textarea>
     </td>
 </tr>
 <tr>

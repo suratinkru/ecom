@@ -17,7 +17,7 @@
         </nav>
     </div>
 </div>
-<div class="container bg-white rounded">
+<div class="container bg-white rounded mb-5">
 
 <div class="row mt-2">
 
