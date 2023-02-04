@@ -2,6 +2,33 @@
 
 
 <?php include_once "../layouts/leftbar.php" ?>
+
+<script>
+	function showDetail(str) {
+  
+
+
+  $.ajax({
+			 //AJAX type is "Post".
+			 type: "POST",
+			 //Data will be sent to "ajax.php".
+			 url: "../controllers/orders/orderDetail.php",
+			 //Data, that will be sent to "ajax.php".
+			 data: {
+				 //Assigning value of "name" into "search" variable.
+				 id: str
+			 },
+			 //If result found, this funtion will be called.
+			 success: function(resp) {
+				 //Assigning result to "display" div in "search.php" file.
+				 console.log("ddd:",resp);
+			   
+				 $("#display").html(resp).show();
+			 }
+		 });
+}
+</script>
+
 <!-- main-content -->
 <div class="main-panel">
 	<div class="container">
@@ -18,7 +45,7 @@
 						<i class="flaticon-right-arrow"></i>
 					</li>
 					<li class="nav-item">
-						<a href="#">รายการประเภทสินค้า</a>
+						<a href="#">รายการที่สั่งซื้อ</a>
 					</li>
 
 				</ul>
@@ -30,11 +57,11 @@
 					<div class="card">
 						<div class="card-header">
 							<div class="d-flex align-items-center">
-								<h4 class="card-title">รายการประเภทสินค้า</h4>
-								<a href="add-category.php" class="btn btn-primary btn-round ml-auto" >
+								<h4 class="card-title">รายการที่สั่งซื้อ</h4>
+								<!-- <a href="add-category.php" class="btn btn-primary btn-round ml-auto" >
 									<i class="fa fa-plus"></i>
-									เพิ่มประเภทสินค้า
-								</a>
+									เพิ่มรายการที่สั่งซื้อ
+								</a> -->
 							</div>
 						</div>
 						<div class="card-body">
@@ -66,7 +93,7 @@
 													</div>
 													<div class="col-md-6 pr-0">
 														<div class="form-group form-group-default">
-															<label>รูปประเภทสินค้า</label>
+															<label>รูปรายการที่สั่งซื้อ</label>
 
 
 															<div class="input-file input-file-image text-center">
@@ -123,7 +150,7 @@
 													</div>
 													<div class="col-md-6 pr-0">
 														<div class="form-group form-group-default">
-															<label>รูปประเภทสินค้า</label>
+															<label>รูปรายการที่สั่งซื้อ</label>
 
 
 															<div class="input-file input-file-image text-center">
@@ -155,14 +182,19 @@
 
 
 							<div class="table-responsive">
-								<table id="add-row" class="display table table-striped table-hover">
+								<table id="add-row" class="display table table-striped table-hover " >
 									<thead>
 										<tr>
 											<th>ลำดับ</th>
-											
-											<th>รูปภาพหมวดหมู่สินค้า</th>
-											<th>หมวดหมู่สินค้า</th>
+											<th>สลิป</th>
 											<th>สถานะ</th>
+											<th>ชื่อลูกค้า</th>
+											<th>อีเมล</th>
+											<th>เบอร์</th>
+											<th>จำนวนที่สั่งซื้อทั้งหมด</th>
+											<th>จำนวนที่ต้องชำระ</th>
+											<th>ที่อยู่</th>
+											<th>รายละเอียด</th>
 											<th style="width: 10%">จัดการ</th>
 										</tr>
 									</thead>
@@ -171,22 +203,27 @@
 
 										<?php
 										include("../../config/connectdb.php");
-										$select = $conn->prepare("SELECT * FROM `tbl_categories` ORDER BY `id`;"); //Query
+										$select = $conn->prepare("SELECT * FROM `tbl_order` ORDER BY `o_id` DESC;"); //Query
 										$select->execute();
 										while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+											
 											echo '<tr>';
-											echo '<td>' . $row["id"] . '</td>';
-											echo '<td >  <img class="img-upload-preview " width="50" height="50" src="../uploads/'. $row["image"] . '" alt="preview" style="object-fit: cover;"></td> ';
-											echo '<td>' . $row["name"] . '</td>';
+											echo '<td>' . $row["o_id"] . '</td>';
+											echo '<td >  <img class="img-upload-preview " width="50" height="50" src="../uploads/'. $row["slip"] . '" alt="preview" style="object-fit: cover;"></td> ';
 											echo '<td>' . $row["status"] . '</td>';
+											echo '<td >' . $row["o_name"] . '</td> ';
+											echo '<td>' . $row["o_email"] . '</td>';
+											echo '<td>' . $row["o_phone"] . '</td>';
+											echo '<td>' . $row["o_qty"] . '</td>';
+											echo '<td>' . $row["o_total"] . '</td>';
+											echo '<td>' . $row["o_address"] . '</td>';
+											echo '<td>   <div> <span class="badge bg-danger rounded-pill mt-2" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModalCenter" onclick=" showDetail('.$row["o_id"].') "> ดูรายละเอียด  </span></div> </td>';
 											echo '<td>
 												<div class="form-button-action">
-													<a href="edit-category.php?id='. $row["id"] .'" data-toggle="tooltip"  title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
+													<a href="edit-order.php?id='. $row["o_id"] .'" data-toggle="tooltip"  title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
 														<i class="fa fa-edit"></i>
 													</a>
-													<a href="../controllers/category/delete_category.php?id='. $row["id"] .'" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-														<i class="fa fa-times"></i>
-													</a>
+												
 												</div>
 											</td>';
 											echo '</tr>';
@@ -233,6 +270,27 @@
 <!-- main-content closed -->
 
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: rgba(241,155,255,1);">
+        <h5 class="modal-title" id="exampleModalCenterTitle">รายเอียดสินค้า</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="display">
+
+        </div>
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+
+
+
 
 <!--   Core JS Files   -->
 <script src="../assets/js/core/jquery.3.2.1.min.js"></script>
@@ -263,7 +321,9 @@
 
 <script>
 	$(document).ready(function() {
-		$('#basic-datatables').DataTable({});
+		$('#basic-datatables').DataTable({
+			"order": [[1, 'desc']],
+		});
 
 		$('#multi-filter-select').DataTable({
 			"pageLength": 5,
@@ -291,8 +351,11 @@
 
 		// Add Row
 		$('#add-row').DataTable({
-			"pageLength": 5,
+			"pageLength": 10,
+			"order": [[1, 'desc']],
+			
 		});
+	
 
 		var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
 

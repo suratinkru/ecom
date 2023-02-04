@@ -65,7 +65,7 @@ $allowd_file_ext = array("jpg", "jpeg", "png");
         });
             }, 1000);
         </script>';
-    } elseif ($_FILES['bank_logo']['size'] > 1000000) { // file shouldn't be larger than 1Megabyte
+    } else if ($_FILES['bank_logo']['size'] > 1000000) { // file shouldn't be larger than 1Megabyte
         // echo "File too large!";
         echo '
         <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>

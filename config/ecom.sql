@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2022 at 12:09 PM
+-- Generation Time: Jan 23, 2023 at 02:55 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -31,9 +31,17 @@ CREATE TABLE `tbl_admin` (
   `id` int(11) NOT NULL,
   `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `role` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_admin`
+--
+
+INSERT INTO `tbl_admin` (`id`, `username`, `password`, `role`, `created_at`, `updated_at`) VALUES
+(1, 'admin', '011c945f30ce2cbafc452f39840f025693339c42', 'admin', '2023-01-03 01:22:02', '2023-01-03 01:22:02');
 
 -- --------------------------------------------------------
 
@@ -59,7 +67,7 @@ CREATE TABLE `tbl_banks` (
 --
 
 INSERT INTO `tbl_banks` (`id`, `bank_code`, `bank_name`, `bank_logo`, `bank_account`, `bank_account_name`, `open_date`, `status`, `created_at`, `updated_at`) VALUES
-(3, 'test22', 'test22', 'Screenshot 2022-11-03 213848.png', 'test22', 'xcvxc', NULL, 'on', '2022-11-09 14:35:37', '2022-11-09 14:35:37');
+(3, 'xxxxxx', 'xxxxxx', 'Screenshot 2022-11-03 213848.png', 'xxxxxx', 'xxxxxx', NULL, 'on', '2022-11-09 14:35:37', '2022-11-09 14:35:37');
 
 -- --------------------------------------------------------
 
@@ -134,9 +142,21 @@ CREATE TABLE `tbl_order` (
   `o_phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `o_qty` int(11) DEFAULT NULL,
   `o_total` float(8,2) NOT NULL,
+  `slip` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT 'รอชำระเงิน',
+  `user_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_order`
+--
+
+INSERT INTO `tbl_order` (`o_id`, `o_name`, `o_address`, `o_email`, `o_phone`, `o_qty`, `o_total`, `slip`, `status`, `user_id`, `created_at`, `updated_at`) VALUES
+(35, 'สุรทิน เครือแสง', '11235/254 ', 'test@gmail.com', '0884092629', 5, 11504.00, 'lottery.png', 'รอการตรวจสอบสลิป', 1, '2022-12-30 07:15:43', '2022-12-30 07:15:43'),
+(36, 'dfsdf', 'sdfsdf', 'sdf@gmail.com', '3234234', 2, 1000.00, 'logo.png', 'รอการตรวจสอบสลิป', 1, '2022-12-30 07:22:42', '2022-12-30 07:22:42'),
+(37, 'sdf', 'sdf', 'sdf@gmail.com', '43453', 1, 5002.00, NULL, 'รอชำระเงิน', 1, '2023-01-03 02:58:17', '2023-01-03 02:58:17');
 
 -- --------------------------------------------------------
 
@@ -148,11 +168,23 @@ CREATE TABLE `tbl_order_detail` (
   `d_id` int(11) NOT NULL,
   `o_id` int(11) NOT NULL,
   `p_id` int(11) NOT NULL,
+  `p_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `price` float(8,2) DEFAULT NULL,
   `d_qty` int(11) NOT NULL,
   `d_subtotal` float(8,2) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tbl_order_detail`
+--
+
+INSERT INTO `tbl_order_detail` (`d_id`, `o_id`, `p_id`, `p_name`, `price`, `d_qty`, `d_subtotal`, `created_at`, `updated_at`) VALUES
+(20, 35, 1, 'test', 500.00, 3, 1500.00, '2022-12-30 07:15:43', '2022-12-30 07:15:43'),
+(21, 35, 3, 'ggggggg', 5002.00, 2, 10004.00, '2022-12-30 07:15:43', '2022-12-30 07:15:43'),
+(22, 36, 1, 'test', 500.00, 2, 1000.00, '2022-12-30 07:22:42', '2022-12-30 07:22:42'),
+(23, 37, 3, 'ggggggg', 5002.00, 1, 5002.00, '2023-01-03 02:58:17', '2023-01-03 02:58:17');
 
 -- --------------------------------------------------------
 
@@ -297,7 +329,7 @@ ALTER TABLE `tbl_settings_bestseller`
 -- AUTO_INCREMENT for table `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_banks`
@@ -321,13 +353,13 @@ ALTER TABLE `tbl_member`
 -- AUTO_INCREMENT for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `tbl_order_detail`
 --
 ALTER TABLE `tbl_order_detail`
-  MODIFY `d_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `d_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `tbl_products`

@@ -134,16 +134,16 @@ include_once "./controllers/index.php";
             width: 100%;
         }
     }
-
+/* 
     .imgAnimate {
 
         animation-duration: 3s;
         animation-name: imgani;
         animation-iteration-count: infinite;
         animation-direction: alternate;
-        /* transform: translate(284px, 442px) translate(-50%, -50%) translate3d(0px, 1.6427px, 0px) translate(0px, 2px) rotateX(-0.6975deg);  */
+       
 
-    }
+    } */
 
     @keyframes imgani {
         from {

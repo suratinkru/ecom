@@ -1,3 +1,33 @@
+<?php session_start(); 
+
+
+
+
+// echo '
+// <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+// <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+// <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">';
+//เช็คว่ามีตัวแปร session อะไรบ้าง
+// print_r($_SESSION);
+//exit();
+//สร้างเงื่อนไขตรวจสอบสิทธิ์การเข้าใช้งานจาก session
+if (empty($_SESSION['admin_id'])  && empty($_SESSION['admin_username']) ) {
+    echo '<script>
+	    window.location = "../pages/login.php";;
+                </script>';
+    exit();
+}else if($_SESSION['admin_role'] !== 'admin'){
+	echo '<script>
+	window.location = "../pages/login.php";;
+			</script>';
+exit();
+}
+
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -281,20 +311,20 @@
 										<div class="user-box">
 											<div class="avatar-lg"><img src="https://via.placeholder.com/50" alt="image profile" class="avatar-img rounded"></div>
 											<div class="u-text">
-												<h4>Hizrian</h4>
-												<p class="text-muted">hello@example.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+												<h4> <?php echo $_SESSION['admin_username'] ?> </h4>
+												
 											</div>
 										</div>
 									</li>
 									<li>
-										<div class="dropdown-divider"></div>
+										<!-- <div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="#">My Profile</a>
 										<a class="dropdown-item" href="#">My Balance</a>
 										<a class="dropdown-item" href="#">Inbox</a>
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="#">Account Setting</a>
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="#">Logout</a>
+										<div class="dropdown-divider"></div> -->
+										<a class="dropdown-item" href="../layouts/logout.php">Logout</a>
 									</li>
 								</div>
 							</ul>

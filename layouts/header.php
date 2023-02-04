@@ -252,7 +252,7 @@ background: linear-gradient(90deg, rgba(241,155,255,1) 0%, rgba(126,104,231,1) 3
     <nav class="navbar navbar-expand-lg bg-white p-2 sticky-top">
         <div class="container">
            
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/ecommerce/index.php">
            <img src="./assets/images/logo.png" alt="Logo" width="60" height="24" class="d-inline-block align-text-top">
             อาหารแมว
             </a>
@@ -267,9 +267,9 @@ background: linear-gradient(90deg, rgba(241,155,255,1) 0%, rgba(126,104,231,1) 3
                     <li class="nav-item">
                         <a class="nav-link <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/product.php' ? 'text-warning' : 'text-dark'  ?>" href="product.php">สินค้า</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link  <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/pay.php' ? 'text-warning' : 'text-dark'  ?>" href="pay.php">แจ้งชำระเงิน</a>
-                    </li>
+                    </li> -->
 
                     <li class="nav-item">
                         <a class="nav-link  <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/about-us.php' ? 'text-warning' : 'text-dark'  ?>" href="about-us.php">เกี่ยวกับเรา</a>
@@ -318,8 +318,8 @@ background: linear-gradient(90deg, rgba(241,155,255,1) 0%, rgba(126,104,231,1) 3
                                         <?php echo $_SESSION['username'] ?>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-dark">
-                                        <!-- <li><a class="dropdown-item" href="#">Action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a></li> -->
+                                        <!-- <li><a class="dropdown-item" href="#">Action</a></li> -->
+                                        <li><a class="dropdown-item" href="/ecommerce/pay.php">รายการที่สั่งซื้อ & การชำระเงิน</a></li>
                                         <li><a class="dropdown-item" href="logout.php">ออกจากระบบ</a></li>
                                     </ul>
                                 </li>
@@ -357,7 +357,7 @@ background: linear-gradient(90deg, rgba(241,155,255,1) 0%, rgba(126,104,231,1) 3
     top: 60px;
     background-color: #f8f9fa;"></button>
                         <div id="screen">
-                            <div id="header">ร้านขายอุปกรณ์&อาหารแมว </div>
+                            <div id="header">แชท สอบถาม</div>
                             <div id="messageDisplaySection">
                                 <!-- bot messages -->
                                 <!-- <div class="chat botMessages">Hello there, how can I help you?</div> -->
@@ -369,7 +369,7 @@ background: linear-gradient(90deg, rgba(241,155,255,1) 0%, rgba(126,104,231,1) 3
                             </div>
                             <!-- messages input field -->
                             <div id="userInput">
-                                <input type="text" name="messages" id="messages" autocomplete="OFF" placeholder="Type Your Message Here." required>
+                                <input type="text" name="messages" id="messages" autocomplete="OFF" placeholder="Aa" required>
                                 <input type="submit" value="Send" id="send" name="send">
                             </div>
                         </div>
@@ -411,7 +411,7 @@ background: linear-gradient(90deg, rgba(241,155,255,1) 0%, rgba(126,104,231,1) 3
                 // response text
                 success: function(data) {
                     // show response
-                    alert(data)
+                    // alert(data)
                     $appendBotResponse = '<div id="messagesContainer"><div class="chat botMessages">' + data + '</div></div>';
                     $("#messageDisplaySection").append($appendBotResponse);
                 }

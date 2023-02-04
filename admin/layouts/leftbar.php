@@ -9,7 +9,7 @@
 						<div class="info">
 							<a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
 								<span>
-									Suratin
+								<?php echo $_SESSION['admin_username'] ?> 
 									<span class="user-level">Administrator</span>
 									<!-- <span class="caret"></span> -->
 								</span>
@@ -82,10 +82,11 @@
 							</a>
 							
 						</li>
-						<li class="nav-item <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/admin/pages/shipping-information.php'  ? 'active' : ''  ?>">
-							<a  href="shipping-information.php">
-							<i class="far fa-calendar-alt"></i>
-								<p>ข้อมูลการจัดส่งสินค้า</p>
+						<li class="nav-item <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/admin/pages/chat-bot.php'  ? 'active' : ''  ?>">
+							<a  href="chat-bot.php">
+							<!-- <i class="far fa-calendar-alt"></i> -->
+							<i class="fab fa-rocketchat"></i>
+								<p>ตั้งค่าแชทบอท</p>
 								
 							</a>
 							

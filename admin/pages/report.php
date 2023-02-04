@@ -18,7 +18,7 @@
 						<i class="flaticon-right-arrow"></i>
 					</li>
 					<li class="nav-item">
-						<a href="#">รายการประเภทสินค้า</a>
+						<a href="#">รายงานการขาย</a>
 					</li>
 
 				</ul>
@@ -30,11 +30,11 @@
 					<div class="card">
 						<div class="card-header">
 							<div class="d-flex align-items-center">
-								<h4 class="card-title">รายการประเภทสินค้า</h4>
-								<a href="add-category.php" class="btn btn-primary btn-round ml-auto" >
+								<h4 class="card-title">สรุปยอดขาย</h4>
+								<!-- <a href="add-category.php" class="btn btn-primary btn-round ml-auto" >
 									<i class="fa fa-plus"></i>
 									เพิ่มประเภทสินค้า
-								</a>
+								</a> -->
 							</div>
 						</div>
 						<div class="card-body">
@@ -159,11 +159,12 @@
 									<thead>
 										<tr>
 											<th>ลำดับ</th>
+											<th>สินค้า</th>
+											<th>จำนวนขาย</th>
 											
-											<th>รูปภาพหมวดหมู่สินค้า</th>
-											<th>หมวดหมู่สินค้า</th>
-											<th>สถานะ</th>
-											<th style="width: 10%">จัดการ</th>
+											<th>ยอดขาย</th>
+										
+											
 										</tr>
 									</thead>
 
@@ -171,27 +172,21 @@
 
 										<?php
 										include("../../config/connectdb.php");
-										$select = $conn->prepare("SELECT * FROM `tbl_categories` ORDER BY `id`;"); //Query
+										$select = $conn->prepare("SELECT o.o_id ,od.p_name , SUM(od.d_qty) as sum_qty , SUM(od.price) as sum_price , SUM(od.price) as sum_price  from tbl_order as o JOIN  tbl_order_detail as  od  ON o.o_id = od.o_id GROUP BY od.p_id"); //Query
 										$select->execute();
-										while ($row = $select->fetch(PDO::FETCH_ASSOC)) {
+										$rows = $select->fetchAll(PDO::FETCH_ASSOC);
+									
+										$x = 1;
+										foreach($rows as $row) {
 											echo '<tr>';
-											echo '<td>' . $row["id"] . '</td>';
-											echo '<td >  <img class="img-upload-preview " width="50" height="50" src="../uploads/'. $row["image"] . '" alt="preview" style="object-fit: cover;"></td> ';
-											echo '<td>' . $row["name"] . '</td>';
-											echo '<td>' . $row["status"] . '</td>';
-											echo '<td>
-												<div class="form-button-action">
-													<a href="edit-category.php?id='. $row["id"] .'" data-toggle="tooltip"  title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit">
-														<i class="fa fa-edit"></i>
-													</a>
-													<a href="../controllers/category/delete_category.php?id='. $row["id"] .'" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-														<i class="fa fa-times"></i>
-													</a>
-												</div>
-											</td>';
+											echo '<td>' . $x . '</td>';
+											echo '<td>' . $row['p_name'] . '</td>';
+											echo '<td>' . $row['sum_qty'] . '</td>';
+											echo '<td>' . $row['sum_price'] . '</td>';
 											echo '</tr>';
+											$x ++;
 										}
-										?>
+										 ?>
 
 
 									</tbody>
