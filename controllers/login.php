@@ -16,7 +16,7 @@
     $password = sha1($_POST['password']); //เก็บรหัสผ่านในรูปแบบ sha1 
 
     //check username  & password
-      $stmt = $conn->prepare("SELECT id, username, fname,lname,email FROM tbl_member WHERE username = :username AND password = :password");
+      $stmt = $conn->prepare("SELECT * FROM tbl_member WHERE username = :username AND password = :password");
       $stmt->bindParam(':username', $username , PDO::PARAM_STR);
       $stmt->bindParam(':password', $password , PDO::PARAM_STR);
       $stmt->execute();
@@ -30,7 +30,10 @@
         $_SESSION['fname'] = $row['fname'];
         $_SESSION['lname'] = $row['lname'];
         $_SESSION['username'] = $row['username'];
+        $_SESSION['phone'] = $row['phone'];
+        $_SESSION['address'] = $row['address'];
         $_SESSION['email'] = $row['email'];
+
 
         //เช็คว่ามีตัวแปร session อะไรบ้าง
         //print_r($_SESSION);

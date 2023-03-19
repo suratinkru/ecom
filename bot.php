@@ -8,7 +8,7 @@
 // password = "" (blank)
 // database Name = your database name
 
-$conn = mysqli_connect("localhost","root","","ecom");
+$conn = mysqli_connect("localhost","root","","ecom1");
 
 if($conn){
 $user_messages = mysqli_real_escape_string($conn, $_POST['messageValue']);

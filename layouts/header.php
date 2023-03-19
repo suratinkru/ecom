@@ -84,22 +84,6 @@ echo '
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         * {
             padding: 0;
             margin: 0;
@@ -228,6 +212,21 @@ echo '
             cursor: pointer;
             display: none;
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </style>
 </head>
 
@@ -253,7 +252,7 @@ background: linear-gradient(90deg, rgba(241,155,255,1) 0%, rgba(126,104,231,1) 3
         <div class="container">
            
             <a class="navbar-brand" href="/ecommerce/index.php">
-           <img src="./assets/images/logo.png" alt="Logo" width="60" height="24" class="d-inline-block align-text-top">
+           <!-- <img src="./assets/images/logo.png" alt="Logo" width="60" height="24" class="d-inline-block align-text-top"> -->
             อาหารแมว
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -277,6 +276,9 @@ background: linear-gradient(90deg, rgba(241,155,255,1) 0%, rgba(126,104,231,1) 3
                     <li class="nav-item">
                         <a class="nav-link  <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/contact.php' ? 'text-warning' : 'text-dark'  ?>" href="contact.php">ติดต่อ</a>
                     </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link  <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/category.php' ? 'text-warning' : 'text-dark'  ?>" href="category.php">ประเภทสินค้า</a>
+                    </li> -->
                 </ul>
                 <div class="d-flex">
                     <form action="search.php" class="d-flex mb-0" role="search">
@@ -337,7 +339,8 @@ background: linear-gradient(90deg, rgba(241,155,255,1) 0%, rgba(126,104,231,1) 3
 
     <!-- chat -->
 
-
+  
+   
     <div id="shopping-cart" class="shopping-cart ismobile2 p-5"><button rounded="" class="btn collapsed" data-v-e5330474="" aria-expanded="false" aria-controls="sidebar-right-cart" style="overflow-anchor: none;     border-radius: 20px;
    border: 1px solid snow;color: snow;
     font-size: 26px;
@@ -359,15 +362,9 @@ background: linear-gradient(90deg, rgba(241,155,255,1) 0%, rgba(126,104,231,1) 3
                         <div id="screen">
                             <div id="header">แชท สอบถาม</div>
                             <div id="messageDisplaySection">
-                                <!-- bot messages -->
-                                <!-- <div class="chat botMessages">Hello there, how can I help you?</div> -->
-
-                                <!-- usersMessages -->
-                                <!-- <div id="messagesContainer">
-                <div class="chat usersMessages">I need your help to build a website.</div>
-            </div> -->
+   
                             </div>
-                            <!-- messages input field -->
+                     
                             <div id="userInput">
                                 <input type="text" name="messages" id="messages" autocomplete="OFF" placeholder="Aa" required>
                                 <input type="submit" value="Send" id="send" name="send">

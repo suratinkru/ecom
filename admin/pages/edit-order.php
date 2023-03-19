@@ -177,7 +177,7 @@ if ($id) {
 
                                 </div>
                                 <div class="modal-footer border-0">
-                                    <button type="submit"  class="btn btn-primary">ยินยัน</button>
+                                    <button type="submit"  class="btn btn-primary">ยืนยัน</button>
                                     <a href="order.php" class="btn btn-danger" data-dismiss="modal">ยกเลิก</a>
                                 </div>
                             </form>

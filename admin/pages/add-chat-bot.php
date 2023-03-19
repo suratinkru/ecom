@@ -126,7 +126,7 @@
 								</div>
 								<div class="modal-footer border-0">
 									<button type="submit" class="btn btn-primary">ยินยัน</button>
-									<a href="category.php" class="btn btn-danger" data-dismiss="modal">ยกเลิก</a>
+									<a href="chat-bot.php" class="btn btn-danger" data-dismiss="modal">ยกเลิก</a>
 								</div>
 							</form>
 						</div>

@@ -223,7 +223,7 @@ include_once "./controllers/index.php";
                 <div>
                     <h1 class="title">Cat stores</h1>
                     <div style="height: 90px;">
-                        <h2 id="demo" class="mb-5  "></h2>
+                        <h2 class="mb-5  ">อาหารแมว ขนมสัตว์เลี้ยง ของใช้สัตว์เลี้ยง ผลิตภัณฑ์อาบน้ำ/บำรุงขน เกรดพรีเมี่ยม</h2>
                     </div>
 
                     <div class="d-flex flex-row mb-3 mt-5">
@@ -247,7 +247,7 @@ include_once "./controllers/index.php";
                     <a href="product.php" class="btn btn-danger"><i class="fa-brands fa-shopify me-2"></i>ซื้อเลย</a>
                 </div>
             </div>
-            <div class="col-lg-6 d-lg-flex flex-lg-column align-items-center order-1 order-lg-2 hero-img aos-init aos-animate imgAnimate " data-aos="fade-up"> <img src="./assets/images/SW.png" width="400" alt=""></div>
+            <div class="col-lg-6 d-lg-flex flex-lg-column align-items-center order-1 order-lg-2 hero-img aos-init aos-animate imgAnimate " data-aos="fade-up"> <img src="./assets/images/55408.jpg" width="400" alt=""></div>
         </div>
     </div>
 </section>
@@ -271,7 +271,7 @@ include_once "./controllers/index.php";
                 <div class="col-12">
                     <a href="product_detail.php?id=<?php echo $item['id'] ?>">
                         <div class="card h-100">
-                            <img src="./assets/images/ch.jpg" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
+                            <img src="./admin/uploads/<?php echo $item['image'] ; ?>" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
                             <div class="card-body">
                                 <h5 class="card-title text-start " style="color: #636464;"><?php echo $item['name']  ?></h5>
 

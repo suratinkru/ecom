@@ -34,7 +34,10 @@ if (empty($_SESSION['id']) && empty($_SESSION['fname']) && empty($_SESSION['user
 include_once "./controllers/pay.php";
 
 ?>
-
+   <link href="./assets/app.css" media="all" rel="stylesheet" />
+  <script src="./lib/promptpay-qr.js"></script>
+    <script src="./lib/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js" integrity="sha512-Qlv6VSKh1gDKGoJbnyA5RMXYcvnpIqhO++MhIM2fStMcGT9i2T//tSwYFlcyoRRDcDZ+TYHpH8azBBCyhpSeqw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
@@ -172,18 +175,30 @@ function uploade(id) {
             $order = $selectOrder->fetchAll(PDO::FETCH_ASSOC);
             if (!empty($order)) {
 
-                foreach ($order as $row => $item) { ?>
                
-                    <li id="order" class="list-group-item d-flex justify-content-between align-items-start">
+            $i = 0;
+                foreach ($order as $row => $item) {    $i += 1; ?>
+        
+                    <li id="order" value=<?php echo json_encode($order);  ?>  class="list-group-item d-flex justify-content-between align-items-start">
                         <div class="ms-2 me-auto">
+                            <div class="fs-6" id="oid"  value=<?php echo count($order);  ?>> หมายเลขสั่งซื้อ :<span  style="font-size: 14; font-weight: 100;"> <?php echo $item['o_id'];  ?></span></div>
                             <div class="fs-6"> ขื่อผู้สั่งซื้อ :<span style="font-size: 14; font-weight: 100;"> <?php echo $item['o_name'];  ?></span></div>
                             <div class="fs-6"> เบอร์ : <span style="font-size: 14; font-weight: 100;"> <?php echo $item['o_phone'] ; ?></span></div>
                             <div class="fs-6"> ที่อยู่ : <span style="font-size: 14; font-weight: 100;"><?php echo $item['o_address'] ; ?></span></div>
                             <div class="fs-6"> อีเมล :<span style="font-size: 14; font-weight: 100;"> <?php echo $item['o_email'];  ?></span></div>
                             <div class="fs-6"> จำนวนที่สั่งซื้อ : <span style="font-size: 14; font-weight: 100;"><?php echo $item['o_qty'] ; ?></span></div>
-                            <div class="fs-6"> จำนวนที่ต้องชำระ : <span style="font-size: 14; font-weight: 100;"><?php echo number_format($item['o_total'],2) ;  ?>  ฿</span></div>
+                            <div class="fs-6"> จำนวนที่ต้องชำระ : <span id="<?php echo $i.'g'; ?>" style="font-size: 14; font-weight: 100;" value=<?php echo number_format($item['o_total'],2) ?>><?php echo number_format($item['o_total'],2) ;  ?> ฿ </span></div>
                             <div class="fs-6"> สถานะ :<span style="font-size: 14; font-weight: 100;"> <?php echo $item['status'] ; ?></span></div>
                             <div class="fs-6"> วันที่สั่งซื้อ :<span style="font-size: 14; font-weight: 100;"> <?php echo $item['created_at'] ; ?></span></div>
+                            <div class="fs-6"> PromptPay Scan จ่าย :<span style="font-size: 14; font-weight: 100;"> 
+                              <div id="<?php echo $i; ?>" style="border-style: dashed;  display: flex; padding:10px; border-color: #92a8d1;"></div>
+                          
+
+
+</span></div>
+
+
+                          
                         </div>
                         <div>
                             <div>
@@ -220,27 +235,13 @@ function uploade(id) {
                 <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1">วิธีการชำระเงิน
                     </h5>
-                    <small>2 ช่องทาง</small>
+                  
                 </div>
-                <p class="mb-1">การสั่งซื้อสินค้ากับ ... นั้น สามารถชำระเงินได้ผ่าน 2 ช่องทางหลักดังนี้ </p>
-                <small>(การเก็บเงินปลายทางเมื่อส่งสินค้าจะเปิดตัวเร็วๆ นี้)</small>
+             
             </a>
+          
             <a href="#" class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">1. เก็บเงินปลายทาง</h5>
-                    <small class="text-muted">เก็บเงินปลายทาง</small>
-                </div>
-                <p class="mb-1">ป็นวิธีการที่สะดวกและง่ายที่สุดสำหรับลูกค้าทุกคน เมื่อสินค้ามาถึงหน้าประตู ค่อยจ่ายเงินกับเจ้าหน้าที่ ซึ่งตอนนี้ เทลลี่ บัดดี้ มีบริการ</p>
-                <small class="text-muted">เก็บเงินปลายทางทั่วประเทศไทยแล้ว</small>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">2. โอนเงินผ่านธนาคารหรือตู้ ATM</h5>
-                    <small class="text-muted">โอนเงินผ่านธนาคารหรือตู้ ATM</small>
-                </div>
-                <p class="mb-1">ลูกค้าสามารถเลือกโอนเงินผ่านเคาน์เตอร์ธนาคาร, ATM หรือระบบออนไลน์ต่างๆ ของธนาคาร มายังบัญชีใดก็ได้ดังต่อไปนี้</p>
-
-                <h4 class="mt-5">ชื่อบัญชี บริษัท ... จำกัด</h4>
+               
 
                 <?php
 
@@ -287,6 +288,114 @@ function uploade(id) {
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+                                
+                                // get QR-dom
+                                var qr_doms =document.getElementById("oid").getAttribute("value");
+                          
+                                var orders = document.getElementById('order').getAttribute("value");
+                               
+                               
+                                var qr_dom = 1;
+
+                                for (let j = 0; j < qr_doms ; j++) {
+                      
+                                    qr_dom = j+1;
+                        
+                                    render_qr()
+                                    
+                                }
+                        //    alert(qr_dom)
+                                // render QR function
+                                function render_qr(){
+                                  
+                                  // var acc_id = document.getElementById('acc_id').value;
+                                  var acc_id = '0884092629';
+                                  var amount = document.getElementById(qr_dom+'g').getAttribute("value");
+                                  var txt = PromptPayQR.gen_text(acc_id, parseFloat(amount.replace(/,/g, '')));
+                               
+                                  qr_dom.innerHTML = "";
+                                  if(txt){
+                                    new QRCode(qr_dom.toString(), txt);
+                                  }
+                                }
+                          
+                                // download function
+                                // https://stackoverflow.com/a/46406124/466693
+                                function dataURItoBlob(dataURI) {
+                                  // convert base64 to raw binary data held in a string
+                                  // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
+                                  var byteString = atob(dataURI.split(',')[1]);
+                          
+                                  // separate out the mime component
+                                  var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
+                          
+                                  // write the bytes of the string to an ArrayBuffer
+                                  var ab = new ArrayBuffer(byteString.length);
+                          
+                                  // create a view into the buffer
+                                  var ia = new Uint8Array(ab);
+                          
+                                  // set the bytes of the buffer to the correct values
+                                  for (var i = 0; i < byteString.length; i++) {
+                                      ia[i] = byteString.charCodeAt(i);
+                                  }
+                          
+                                  // write the ArrayBuffer to a blob, and you're done
+                                  var blob = new Blob([ab], {type: mimeString});
+                                  return blob;
+                          
+                                }
+                                function download() {
+                            
+                                  // find b64
+                                  let b64 = document.getElementsByTagName('img')[0].src;
+                                  alert("b64",b64)
+                                  if (!b64) b64 = document.getElementsByTagName('canvas')[0].toDataURL();
+                                  if (!b64) {
+                                    alert("Cannot find QR Image");
+                                    return;
+                                  }
+                                  // build blob
+                                  let blob = dataURItoBlob(b64);
+                                  // download image
+                                  saveAs(blob, "download.png");
+                                }
+                          
+                                // bind acc_id, amount, download
+                                // document.getElementById('acc_id').addEventListener('keyup', render_qr, true);
+                                // document.getElementById('amount').addEventListener('keyup', render_qr, true);
+                   
+                          
+                                // preview qr
+                                // render_qr();
+                             
+                          
+                              </script>
+
+
+
+
+
+
+
+
+
+
+
 
 
 

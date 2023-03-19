@@ -100,6 +100,24 @@ if(!empty($_SESSION['cart']))
 </table>
 </div>
 
+
+
+        <?php
+$name1 = "";
+$address1 = "";
+$email1 = "";
+$phone1 = "";
+        if(!empty($_SESSION['fname'])){
+            $name1 = $_SESSION['fname']  ;
+            $address1 = $_SESSION['address'];
+            $email1 = $_SESSION['email'];
+            $phone1 = $_SESSION['phone'];
+           
+        }
+
+
+        ?>
+
 <div class="table-responsive">
 <table width="600" border="0" align="center" class="table table-striped table-hover">
 <tr>
@@ -107,22 +125,22 @@ if(!empty($_SESSION['cart']))
 </tr>
 <tr>
     <td bgcolor="#EEEEEE">ชื่อ</td>
-    <td><input name="name" type="text" id="name" class="form-control" required/></td>
+    <td><input name="name" type="text" id="name" value=<?=    $name1  ?> class="form-control" required/></td>
 </tr>
 <tr>
     <td width="22%" bgcolor="#EEEEEE">ที่อยู่</td>
     <td width="78%">
     <!-- <textarea name="address" cols="35" rows="5" id="address" required></textarea> -->
-    <textarea class="form-control" id="exampleFormControlTextarea1"  rows="5" id="address" name="address" required></textarea>
+    <textarea class="form-control" id="exampleFormControlTextarea1"  rows="5" id="address" name="address" required> <?php echo htmlspecialchars(stripslashes($address1)); ?></textarea>
     </td>
 </tr>
 <tr>
   	<td bgcolor="#EEEEEE">อีเมล</td>
-  	<td><input name="email" type="email" id="email" class="form-control" required/></td>
+  	<td><input name="email" type="email" id="email" value=<?=    $email1  ?> class="form-control" required/></td>
 </tr>
 <tr>
   	<td bgcolor="#EEEEEE">เบอร์ติดต่อ</td>
-  	<td><input name="phone" type="text" id="phone" class="form-control" required /></td>
+  	<td><input name="phone" type="text" id="phone" value=<?=    $phone1  ?>  class="form-control" required /></td>
 </tr>
 <tr>
 	<td colspan="2" align="center" bgcolor="#CCCCCC">

@@ -123,57 +123,7 @@ include("./config/connectdb.php");
 
         <div class="col-12 ">
 
-            <?php
-
-            $select = $conn->prepare("SELECT * FROM `tbl_categories` ORDER BY `id`;"); //Query
-            $select->execute();
-            $categories = $select->fetchAll(PDO::FETCH_ASSOC);
-
-            if (!empty($categories)) {
-
-
-            ?>
-                <!-- หมวดหมู่ -->
-                <div class="row">
-                    <!-- <h4 class="text-start">โปรโมชั่น</h4> -->
-                    <div class="d-flex ">
-                        <div class="p-2">หมวดหมู่</div>
-
-                        <a href="category.php" class="ms-auto p-2">ทั้งหมด</a>
-                    </div>
-                </div>
-
-
-                <div class="row mb-5 row-cols-1 row-cols-md-6 g-0  " >
-
-                    <?php
-
-
-                    $c = 0;
-                    foreach ($categories as $row => $link) {
-                        if ($link['status'] != 'off' &&  $c < 8) {
-                            $c += 1;
-                    ?>
-                            <div class="col-md-1 smstyle" >
-                                <a href="product_type.php?id=<?php echo $link['id']  ?>&name=<?php echo $link['name']  ?>">
-                                    <div class="card h-100 " style="border-right: 1px solid #e2e2e2;
-    border-bottom: 1px solid #e2e2e2;">
-                                        <img src="./admin/uploads/<?php echo $link['image']  ?>" class="card-img-top" alt="..." style="height: 100px; object-fit: cover;">
-                                        <div class="card-body">
-                                            <h6 class="card-title"><?php echo $link['name']  ?></h5>
-
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                    <?php }
-                    }   ?>
-
-                </div>
-            <?php   } ?>
-            <!-- end หมวดหมู่ -->
-
-
+     
 
             <?php
 
@@ -192,7 +142,7 @@ include("./config/connectdb.php");
                 <div class="row">
 
                     <div class="d-flex ">
-                        <div class="p-2">โปรโมชั่น</div>
+                        <div class="p-2">โปรโมชั่น และ สินค้าขายดี </div>
 
                         <a href="promotion.php" class="ms-auto p-2">ทั้งหมด</a>
                     </div>

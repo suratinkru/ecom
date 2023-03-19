@@ -11,7 +11,7 @@
 
 
 
-
+<!-- 
 <div class="container-fulid bg-white">
 <div class="container">
   <footer class="py-5">
@@ -74,7 +74,7 @@
     </div>
   </footer>
 </div>
-</div>
+</div> -->
 
 <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
