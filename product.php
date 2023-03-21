@@ -180,7 +180,7 @@ include("./config/connectdb.php");
 
 
             $sell = 10;
-            $selectbest = $conn->prepare("SELECT * ,pro.id as product_id, pro.name as product_name,pro.image as product_image, cate.name as category_name,promo.name as promoton_name FROM tbl_products as pro ,tbl_categories as cate ,tbl_promotions as promo where pro.sell_number >= :sell and pro.category_id =cate.id and pro.promotion_id = promo.id");
+            $selectbest = $conn->prepare("SELECT * ,pro.id as product_id, pro.name as product_name,pro.image as product_image FROM tbl_products as pro  where pro.sell_number >= :sell ORDER BY pro.sell_number desc");
             $selectbest->execute(array(':sell' =>  $sell ));
 
             // $selectbest = $conn->prepare("SELECT *  FROM tbl_products where sell_number >= 10 ORDER BY `id`;"); //Query
@@ -260,7 +260,7 @@ include("./config/connectdb.php");
 
                 <?php
 
-                $selectProducts = $conn->prepare("SELECT * ,pro.id as product_id, pro.name as product_name,pro.image as product_image, cate.name as category_name,promo.name as promoton_name FROM tbl_products as pro LEFT JOIN tbl_categories as cate ON pro.category_id=cate.id LEFT JOIN tbl_promotions as promo ON pro.promotion_id=promo.id GROUP BY pro.id"); //Query
+                $selectProducts = $conn->prepare("SELECT * ,pro.id as product_id, pro.name as product_name,pro.image as product_image FROM tbl_products as pro "); //Query
                 $selectProducts->execute();
                 while ($row = $selectProducts->fetch(PDO::FETCH_ASSOC)) {
                    

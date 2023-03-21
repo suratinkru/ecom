@@ -8,7 +8,7 @@ include("./config/connectdb.php");
 if (!empty($_GET['name'])) {
     $name = $_GET['name'];
     if ($name) {
-        $stmt = $conn->prepare("SELECT * ,pro.id as product_id, pro.name as product_name,pro.image as product_image, cate.name as category_name,promo.name as promoton_name FROM tbl_products as pro ,tbl_categories as cate ,tbl_promotions as promo where pro.name LIKE :name and pro.category_id =cate.id and pro.promotion_id = promo.id");
+        $stmt = $conn->prepare("SELECT * ,pro.id as product_id, pro.name as product_name,pro.image as product_image FROM tbl_products as pro where pro.name LIKE :name ");
         $stmt->execute(array(':name' => '%' . $name . '%'));
 
         $product = $stmt->fetchAll(PDO::FETCH_ASSOC);

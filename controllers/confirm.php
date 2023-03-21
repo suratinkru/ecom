@@ -79,12 +79,16 @@ foreach($_SESSION['cart'] as $p_id=>$qty)
         $result = $stmt3->execute();
 
 
-        //Dumps the information contained by a prepared statement directly on the output แปลเป็นชาวบ้านๆ คือ แสดง sql statment 
-        
-        // echo 'debugDumpParams <br>';  
-        // echo '<hr>';  
-        // $stmt3->debugDumpParams();
-        // echo '</pre>';
+      //   $data2 = [
+      //     'sell_number' => $name,
+      //     'id' => $item['id'],
+      // ];
+      // $sql2 = "UPDATE tbl_products SET sell_number=:sell_number WHERE id=:id";
+      // $stmt2= $conn->prepare($sql);
+
+
+     
+      $result2 = $stmt2->execute($data);
 
 
         } //foreach

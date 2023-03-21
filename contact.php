@@ -74,6 +74,8 @@ iframe {
 
 </div>
 
+
+
 <div class="container mt-5 mb-5">
     <div class="row">
     <!-- <div class="d-flex justify-content-between">
@@ -83,7 +85,7 @@ iframe {
             <div class="card" style="width: 100%;">
                 <div class="card-body text-center">
                      <i class="fa-solid fa-square-phone icon-st"></i>
-                    <h5 class="card-title">088-409-2629</h5>
+                    <h5 class="card-title">097-2520238</h5>
                     
                 </div>
             </div>
@@ -93,7 +95,7 @@ iframe {
                 <div class="card-body text-center">
                 <i class="fa-solid fa-envelope-circle-check icon-st2"></i>
                   
-                    <h5 class="card-title">suratinit088@gmail.com</h5>
+                    <h5 class="card-title">phengsumalee449@gmail.com</h5>
                     
                 </div>
             </div>
@@ -104,7 +106,7 @@ iframe {
                 <!-- <i class="fa-solid fa-address-book icon-st-address mt-2"></i> -->
                 <i class="fa-brands fa-line icon-st3 "></i>
                  
-                    <h5 class="card-title ">088-409-2629</h5>
+                    <h5 class="card-title ">sumlee2543</h5>
                     
                 </div>
             </div>

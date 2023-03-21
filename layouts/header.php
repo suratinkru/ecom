@@ -238,7 +238,7 @@ background: linear-gradient(90deg, rgba(241,155,255,1) 0%, rgba(126,104,231,1) 3
         <div class="container">
 
             <div class="d-flex bd-highlight">
-                <div class=" flex-grow-1 bd-highlight"> <a href="login.php" type="button" class="btn border-0 me-2 text-white"><i class="fa-solid fa-phone-volume"></i> +6684092629</a></div>
+                <div class=" flex-grow-1 bd-highlight"> <a href="login.php" type="button" class="btn border-0 me-2 text-white"><i class="fa-solid fa-phone-volume"></i> 097-2520238</a></div>
                 <div class=" bd-highlight"><button type="button" class="btn   border-0"><i class="fa-brands fa-line text-white" style="font-size: 20px;"></i></button></div>
                 <div class=" bd-highlight"><button type="button" class="btn  me-2 border-0"><i class="fa-brands fa-facebook text-white" style="font-size: 20px;"></i></button></div>
             </div>
