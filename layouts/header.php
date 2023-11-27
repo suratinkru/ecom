@@ -251,7 +251,7 @@ background: linear-gradient(90deg, rgba(241,155,255,1) 0%, rgba(126,104,231,1) 3
     <nav class="navbar navbar-expand-lg bg-white p-2 sticky-top">
         <div class="container">
            
-            <a class="navbar-brand" href="/ecommerce/index.php">
+            <a class="navbar-brand" href="?page=index">
            <!-- <img src="./assets/images/logo.png" alt="Logo" width="60" height="24" class="d-inline-block align-text-top"> -->
             อาหารแมว
             </a>
@@ -261,23 +261,23 @@ background: linear-gradient(90deg, rgba(241,155,255,1) 0%, rgba(126,104,231,1) 3
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link  <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/index.php' ? 'text-warning' : 'text-dark'  ?>" aria-current="page" href="index.php">หน้าหลัก</a>
+                        <a class="nav-link   <?php echo isActive('index'); ?>" aria-current="page" href="index">หน้าหลัก</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/product.php' ? 'text-warning' : 'text-dark'  ?>" href="product.php">สินค้า</a>
+                        <a class="nav-link <?php echo isActive('product'); ?>" href="product">สินค้า</a>
                     </li>
                     <!-- <li class="nav-item">
-                        <a class="nav-link  <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/pay.php' ? 'text-warning' : 'text-dark'  ?>" href="pay.php">แจ้งชำระเงิน</a>
+                        <a class="nav-link  <?php echo $_SERVER['REQUEST_URI'] === '/ecom/pay.php' ? 'text-warning' : 'text-dark'  ?>" href="pay.php">แจ้งชำระเงิน</a>
                     </li> -->
 
                     <li class="nav-item">
-                        <a class="nav-link  <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/about-us.php' ? 'text-warning' : 'text-dark'  ?>" href="about-us.php">เกี่ยวกับเรา</a>
+                        <a class="nav-link  <?php echo isActive('about-us'); ?>" href="about-us">เกี่ยวกับเรา</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/contact.php' ? 'text-warning' : 'text-dark'  ?>" href="contact.php">ติดต่อ</a>
+                        <a class="nav-link  <?php echo isActive('contact'); ?>" href="contact">ติดต่อ</a>
                     </li>
                     <!-- <li class="nav-item">
-                        <a class="nav-link  <?php echo $_SERVER['REQUEST_URI'] === '/ecommerce/category.php' ? 'text-warning' : 'text-dark'  ?>" href="category.php">ประเภทสินค้า</a>
+                        <a class="nav-link  <?php echo $_SERVER['REQUEST_URI'] === '/ecom/category.php' ? 'text-warning' : 'text-dark'  ?>" href="category.php">ประเภทสินค้า</a>
                     </li> -->
                 </ul>
                 <div class="d-flex">
@@ -321,8 +321,8 @@ background: linear-gradient(90deg, rgba(241,155,255,1) 0%, rgba(126,104,231,1) 3
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-dark">
                                         <!-- <li><a class="dropdown-item" href="#">Action</a></li> -->
-                                        <li><a class="dropdown-item" href="/ecommerce/pay.php">รายการที่สั่งซื้อ & การชำระเงิน</a></li>
-                                        <li><a class="dropdown-item" href="logout.php">ออกจากระบบ</a></li>
+                                        <li><a class="dropdown-item" href="pay">รายการที่สั่งซื้อ & การชำระเงิน</a></li>
+                                        <li><a class="dropdown-item" href="logout">ออกจากระบบ</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -378,6 +378,17 @@ background: linear-gradient(90deg, rgba(241,155,255,1) 0%, rgba(126,104,231,1) 3
     </div>
 
 
+    <?php
+function isActive($page)
+{
+    $currentFile = basename($_SERVER["PHP_SELF"]);
+    if ($currentFile == $page . '.php') {
+        return 'active';
+    } else {
+        return '';
+    }
+}
+?>
 
     <!-- Jquery Start -->
     <script>
